@@ -1,6 +1,22 @@
-# RAG System
+# 🧠 RAG System — Local Retrieval-Augmented Generation
 
-本地 RAG（检索增强生成）系统：文档摄取 → 向量检索 → LLM 问答，附带锚点记忆功能。
+<p align="center">
+  <img src="https://img.shields.io/badge/python-3.11+-blue" alt="Python 3.11+">
+  <img src="https://img.shields.io/badge/license-MIT-green" alt="MIT License">
+  <img src="https://img.shields.io/badge/embedding-local%20%7C%20api-orange" alt="Dual Embedding">
+</p>
+
+一个轻量级的本地 RAG 系统，零依赖 LangChain，支持文档检索 + 锚点会话记忆。
+
+**核心亮点：**
+
+- 🚀 **开箱即用** — 本地嵌入模型，零 API 费用
+- 🇨🇳 **中文优先** — BGE 中文嵌入 + 中文标点感知分割器
+- 🧲 **锚点记忆** — 对话自动总结为提示词，跨会话检索，支持回退
+- 📄 **多格式** — PDF / Word / Excel / PPT / HTML / Markdown 全支持
+- ⚡ **增量更新** — SHA256 比对，只嵌入新增/修改的文件
+- 🔌 **双嵌入** — 本地 (BGE) 和 API (OpenAI 兼容) 一键切换
+- 🪶 **轻量** — 不依赖 LangChain，FAISS 纯本地
 
 ## 快速开始
 
