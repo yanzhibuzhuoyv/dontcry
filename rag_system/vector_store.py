@@ -114,34 +114,56 @@ class VectorStore:
     def replace_source(
         self, source: str, chunks: list[Chunk], embeddings: list[list[float]]
     ) -> None:
-        """Replace chunks of *source* with new ones. Old entries are removed."""
+        """Replace chunks of *source* with new ones. Old entries are removed.
+
+        Extract vectors directly from the FAISS index (IndexFlat stores them
+        internally), filter out removed entries, rebuild.
+        """
         _faiss = _get_faiss()
-        # Remove old entries for this source
-        self._sources.discard(source)
-        old_ids = [
+        ntotal = self._index.ntotal
+
+        # 1. Find which vector positions belong to *source*
+        remove_ids: set[int] = {
             vid for vid, meta in self._metadata.items()
             if meta.get("source") == source
-        ]
-        for vid in old_ids:
+        }
+
+        if ntotal == 0 or not remove_ids:
+            self._sources.discard(source)
+            self.add_documents(chunks, embeddings)
+            return
+
+        # 2. Extract all vectors from FAISS, filter out removed positions
+        sorted_ids = sorted(self._metadata.keys())
+        keep_vectors = np.array(
+            [
+                self._index.reconstruct(pos)
+                for i, pos in enumerate(sorted_ids)
+                if pos not in remove_ids
+            ],
+            dtype=np.float32,
+        )
+
+        # 3. Remove old entries
+        self._sources.discard(source)
+        for vid in remove_ids:
             del self._metadata[vid]
-        # Rebuild FAISS index without removed entries (IndexFlat has no remove)
-        if self._metadata:
-            remaining_vectors = np.array(
-                [self._metadata[vid]["_vec"] for vid in sorted(self._metadata.keys())],
-                dtype=np.float32,
-            )
-            new_index = _faiss.IndexFlatIP(self._dimension)
-            new_index.add(remaining_vectors)  # type: ignore[attr-defined]
-            self._index = new_index
-            # Remap metadata keys
-            sorted_ids = sorted(self._metadata.keys())
-            new_metadata: dict[int, dict[str, object]] = {}
-            for new_id, old_id in enumerate(sorted_ids):
-                new_metadata[new_id] = self._metadata[old_id]
-            self._metadata = new_metadata
-        else:
-            self._index = _faiss.IndexFlatIP(self._dimension)
-        # Add new chunks
+
+        # 4. Rebuild FAISS index with kept vectors
+        new_index = _faiss.IndexFlatIP(self._dimension)
+        if keep_vectors.size > 0:
+            new_index.add(keep_vectors)  # type: ignore[attr-defined]
+
+        # 5. Remap metadata keys (0, 1, 2, ...)
+        remaining = sorted(self._metadata.keys())
+        new_metadata: dict[int, dict[str, object]] = {}
+        for new_id, old_id in enumerate(remaining):
+            new_metadata[new_id] = self._metadata[old_id]
+
+        self._index = new_index
+        self._metadata = new_metadata
+
+        # 6. Add new chunks
         self.add_documents(chunks, embeddings)
 
     def search(

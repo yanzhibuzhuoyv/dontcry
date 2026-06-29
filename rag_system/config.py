@@ -104,8 +104,8 @@ class RAGConfig:
 # ---------------------------------------------------------------------------
 
 _DEFAULTS = {
-    "RAG_EMBEDDING_PROVIDER": "api",
-    "RAG_EMBEDDING_MODEL": "text-embedding-3-small",
+    "RAG_EMBEDDING_PROVIDER": "local",
+    "RAG_EMBEDDING_MODEL": "BAAI/bge-small-zh-v1.5",
     "RAG_EMBEDDING_BASE_URL": "https://api.deepseek.com/v1",
     "RAG_EMBEDDING_API_KEY": "",
     "RAG_EMBEDDING_DEVICE": "cpu",

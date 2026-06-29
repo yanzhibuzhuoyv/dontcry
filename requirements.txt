@@ -1,4 +1,5 @@
 faiss-cpu>=1.8.0,<2.0.0
+markitdown>=0.1.0
 openai>=1.100.0,<2.0.0
 numpy>=1.26.0,<3.0.0
 sentence-transformers>=3.0.0
