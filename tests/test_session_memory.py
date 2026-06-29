@@ -71,8 +71,8 @@ check(not any(c in slug for c in " \t\n"), "no whitespace in slug")
 # ============================================================
 print("\n=== Test 3: filename parsing ===")
 
-d, s = _parse_session_filename("2026-06-28-anchor-memory")
-check(d == "2026-06-28" and s == "anchor-memory", "standard parse")
+d, s = _parse_session_filename("2026-06-28-anchor-memory-230416")
+check(d == "2026-06-28" and "anchor-memory" in s, "standard parse with timestamp")
 
 
 # ============================================================

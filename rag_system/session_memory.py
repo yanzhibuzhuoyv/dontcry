@@ -10,7 +10,7 @@ Workflow per session:
 import json
 import re
 from dataclasses import dataclass
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path
 from typing import Optional
 
@@ -99,15 +99,18 @@ class SessionMemory:
             return {"prompts": [], "merged_count": 0, "session_file": ""}
 
         # 2. Filenames
+        now = datetime.now()
         today = session_date or date.today().isoformat()
+        timestamp = now.strftime("%H%M%S")
         safe_slug = slug or _make_slug(content)
 
-        session_file = self.sessions_dir / f"{today}-{safe_slug}.md"
-        prompt_file = self.prompts_dir / f"{today}-{safe_slug}.prompts.txt"
-        merged_file = self.prompts_dir / f"{today}-{safe_slug}.merged.txt"
+        session_file = self.sessions_dir / f"{today}-{safe_slug}-{timestamp}.md"
+        prompt_file = self.prompts_dir / f"{today}-{safe_slug}-{timestamp}.prompts.txt"
+        merged_file = self.prompts_dir / f"{today}-{safe_slug}-{timestamp}.merged.txt"
 
         # 3. Save session markdown
-        header = f"# Session: {today} — {safe_slug}\n\n"
+        time_str = now.strftime("%H:%M:%S")
+        header = f"# Session: {today} {time_str} — {safe_slug}\n\n"
         session_file.write_text(header + content, encoding="utf-8")
 
         # 4. Load previous merged prompts
@@ -194,7 +197,7 @@ class SessionMemory:
         for f in sorted(self.prompts_dir.glob("*.merged.txt"), reverse=True):
             versions.append({
                 "file": f.name,
-                "prompts": f.read_text(encoding="utf-8"),
+                "prompts": f.read_text(encoding="utf-8", errors="replace"),
             })
         return versions
 
