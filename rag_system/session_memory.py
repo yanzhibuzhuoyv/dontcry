@@ -268,20 +268,39 @@ class SessionMemory:
             return self._fallback_prompts(content)
 
     def _fallback_prompts(self, content: str) -> list[str]:
-        """Keyword extraction fallback when LLM unavailable."""
+        """Keyword extraction fallback when LLM unavailable.
+
+        Extract entities: capitalized words, numbers, topic markers, and
+        the first 5 words of each paragraph as anchor candidates.
+        """
+        import re
+
         lines = [ln.strip() for ln in content.split("\n") if ln.strip()]
         candidates: list[str] = []
+
         for ln in lines:
-            if 10 <= len(ln) <= 60 and not ln.startswith("#"):
-                candidates.append(ln)
-        seen: set[str] = set()
-        unique: list[str] = []
-        for c in candidates:
-            key = c[:20].lower()
-            if key not in seen:
-                seen.add(key)
-                unique.append(c)
-        return unique[:_MAX_PROMPTS]
+            # Skip overly long lines, Q/A prefixes
+            clean = re.sub(r"^(Q\d*[：:]|A\d*[：:]|\d+\.\s*)", "", ln)
+            # Extract 2-6 char Chinese words as potential keywords
+            words = re.findall(r"[一-鿿]{2,6}", clean)
+            for w in words:
+                if len(w) >= 2:
+                    candidates.append(w)
+            # Also grab short meaningful phrases (2-5 words)
+            phrases = re.findall(r"[一-鿿A-Za-z]{4,12}", clean)
+            for p in phrases:
+                candidates.append(p)
+
+        # Dedup and sort by frequency
+        from collections import Counter
+        freq = Counter(candidates)
+        # Keep only entries that appear at least once, sorted by frequency desc
+        result = [k for k, _ in freq.most_common(_MAX_PROMPTS * 2)]
+        # Filter out very common stop words
+        stop = {"什么", "怎么", "为什么", "如何", "可以", "应该", "需要", "这个", "那个", "或者"}
+        result = [r for r in result if r not in stop and len(r) >= 2]
+
+        return result[:_MAX_PROMPTS]
 
     # ------------------------------------------------------------------
     # Prompt merging
@@ -422,7 +441,16 @@ class SessionMemory:
             self._generator = LLMGenerator(config.llm)
             return self._generator
         except RAGSystemError:
-            return None
+            # Try fallback: load config again in case env vars changed
+            import importlib
+            from . import config as cfg_module
+            importlib.reload(cfg_module)
+            try:
+                config = cfg_module.load_rag_config()
+                self._generator = LLMGenerator(config.llm)
+                return self._generator
+            except RAGSystemError:
+                return None
 
 
 # ---------------------------------------------------------------------------
