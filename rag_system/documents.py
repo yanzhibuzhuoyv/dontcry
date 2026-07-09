@@ -4,12 +4,22 @@ Converts PDF, Word, Excel, PPT, HTML, Markdown, and plain text files
 to clean text suitable for embedding.
 """
 
+import logging
+import re
 import subprocess
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import ClassVar, Optional
 
 from .errors import IngestionError
+
+logger = logging.getLogger(__name__)
+
+
+# Precompiled patterns for _strip_markup (module-level for reuse).
+_IMG_LINK_RE = re.compile(r"!\[.*?\]\(.*?\)")
+_LINK_URL_RE = re.compile(r"\[([^\]]*?)\]\(.*?\)")
+_BLANK_LINES_RE = re.compile(r"\n{3,}")
 
 
 # File suffixes that markitdown can handle
@@ -122,9 +132,7 @@ class DocumentLoader:
                 if doc:
                     documents.append(doc)
             except IngestionError as exc:
-                import sys
-
-                print(f"  [WARN] skipping {file_path.name}: {exc}", file=sys.stderr)
+                logger.warning("skipping %s: %s", file_path.name, exc)
 
         return documents
 
@@ -165,12 +173,10 @@ class DocumentLoader:
 
 def _strip_markup(text: str) -> str:
     """Remove common markdown artifacts for cleaner embedding text."""
-    import re
-
     # Remove image links: ![alt](url)
-    text = re.sub(r"!\[.*?\]\(.*?\)", "", text)
+    text = _IMG_LINK_RE.sub("", text)
     # Remove link URLs but keep link text: [text](url) -> text
-    text = re.sub(r"\[([^\]]*?)\]\(.*?\)", r"\1", text)
+    text = _LINK_URL_RE.sub(r"\1", text)
     # Collapse blank lines
-    text = re.sub(r"\n{3,}", "\n\n", text)
+    text = _BLANK_LINES_RE.sub("\n\n", text)
     return text.strip()

@@ -1,0 +1,72 @@
+{
+  "config": {
+    "num_docs": 500,
+    "num_queries": 1000,
+    "top_k": 10,
+    "candidates": 40,
+    "alphas": [
+      0.0,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      1.0
+    ],
+    "embedding_dim": 512,
+    "used_fallback": false
+  },
+  "results": {
+    "0.0": {
+      "all_mrr": 0.560658,
+      "all_recall": 0.752,
+      "exact_mrr": 0.891674,
+      "fuzzy_mrr": 0.229642
+    },
+    "0.2": {
+      "all_mrr": 0.69396,
+      "all_recall": 0.863,
+      "exact_mrr": 0.941586,
+      "fuzzy_mrr": 0.446333
+    },
+    "0.3": {
+      "all_mrr": 0.704542,
+      "all_recall": 0.862,
+      "exact_mrr": 0.936852,
+      "fuzzy_mrr": 0.472233
+    },
+    "0.4": {
+      "all_mrr": 0.710794,
+      "all_recall": 0.859,
+      "exact_mrr": 0.937519,
+      "fuzzy_mrr": 0.484068
+    },
+    "0.5": {
+      "all_mrr": 0.716148,
+      "all_recall": 0.86,
+      "exact_mrr": 0.939186,
+      "fuzzy_mrr": 0.49311
+    },
+    "0.6": {
+      "all_mrr": 0.71778,
+      "all_recall": 0.86,
+      "exact_mrr": 0.940519,
+      "fuzzy_mrr": 0.495041
+    },
+    "0.7": {
+      "all_mrr": 0.719205,
+      "all_recall": 0.859,
+      "exact_mrr": 0.939186,
+      "fuzzy_mrr": 0.499224
+    },
+    "1.0": {
+      "all_mrr": 0.72041,
+      "all_recall": 0.86,
+      "exact_mrr": 0.938667,
+      "fuzzy_mrr": 0.502152
+    }
+  },
+  "best_all_alpha": 1.0,
+  "best_fuzzy_alpha": 1.0
+}

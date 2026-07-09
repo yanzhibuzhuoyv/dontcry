@@ -1,5 +1,7 @@
 """RAG orchestrator: ingest documents, answer questions, interactive chat."""
 
+import hashlib
+import logging
 import sys
 from pathlib import Path
 from typing import Optional
@@ -17,6 +19,12 @@ from .llm import LLMGenerator
 from .retriever import Retriever
 from .splitter import create_splitter
 from .vector_store import VectorStore
+
+logger = logging.getLogger(__name__)
+
+# Number of most recent chat turns (user+assistant pairs × 2 messages) kept
+# as multi-turn context. Older turns are dropped to bound prompt length.
+_DEFAULT_CHAT_HISTORY_WINDOW = 6
 
 
 class RAGSystem:
@@ -53,7 +61,22 @@ class RAGSystem:
         else:
             self._store = VectorStore(self._embedder.dimension)
 
-        self._retriever = Retriever(self._store, self._embedder)
+        # Optional cross-encoder reranker (lazy-loaded on first use).
+        reranker = None
+        if config.retrieval.reranker_enabled:
+            from .reranker import Reranker
+
+            reranker = Reranker(
+                model_name=config.retrieval.reranker_model,
+                device=config.embedding.device,
+            )
+
+        self._retriever = Retriever(
+            self._store,
+            self._embedder,
+            retrieval=config.retrieval,
+            reranker=reranker,
+        )
 
     @property
     def config(self) -> RAGConfig:
@@ -62,6 +85,20 @@ class RAGSystem:
     @property
     def vector_store(self) -> VectorStore:
         return self._store
+
+    def list_sources(self) -> list[str]:
+        """Return a sorted list of ingested source paths."""
+        return sorted(self._store.sources)
+
+    def remove_source(self, source: str) -> int:
+        """Remove a source and all its chunks from the index.
+
+        Persists the change to disk. Returns the number of chunks removed.
+        """
+        removed = self._store.remove_source(source)
+        if removed:
+            self._store.save(self._config.vector_store_dir)
+        return removed
 
     # ------------------------------------------------------------------
     # Ingest
@@ -77,8 +114,6 @@ class RAGSystem:
 
         Returns summary dict with keys: files, chunks, skipped, updated.
         """
-        import hashlib
-
         # 1. Load documents
         try:
             documents = self._loader.load_directory(path, pattern)
@@ -118,21 +153,26 @@ class RAGSystem:
         if not new_docs and not updated_docs:
             return {"files": 0, "chunks": 0, "skipped": skipped, "updated": 0}
 
+        total_chunks = 0
+
         # 3. Replace updated documents (remove old chunks, add new)
         for doc in updated_docs:
             chunks = self._splitter.split_documents([doc])
             if not chunks:
                 continue
+            logger.info("replacing %s: %d chunks", doc.path, len(chunks))
             embeddings = self._embedder.embed_documents([c.text for c in chunks])
             self._store.replace_source(doc.path, chunks, embeddings)
+            total_chunks += len(chunks)
 
         # 4. Add new documents
         if new_docs:
             chunks = self._splitter.split_documents(new_docs)
             if chunks:
-                print(f"  Embedding {len(chunks)} chunks...")
+                logger.info("embedding %d new chunks...", len(chunks))
                 embeddings = self._embedder.embed_documents([c.text for c in chunks])
                 self._store.add_documents(chunks, embeddings)
+                total_chunks += len(chunks)
 
         # 5. Persist
         self._store.save(self._config.vector_store_dir)
@@ -140,10 +180,7 @@ class RAGSystem:
         total = len(new_docs) + len(updated_docs)
         return {
             "files": total,
-            "chunks": sum(
-                len(self._splitter.split_documents([d]))
-                for d in new_docs + updated_docs
-            ),
+            "chunks": total_chunks,
             "skipped": skipped,
             "updated": len(updated_docs),
         }
@@ -186,7 +223,13 @@ class RAGSystem:
     # ------------------------------------------------------------------
 
     def chat(self) -> None:
-        """Interactive chat REPL loop."""
+        """Interactive chat REPL loop with multi-turn context.
+
+        Each turn carries the last ``_DEFAULT_CHAT_HISTORY_WINDOW`` messages
+        as conversation history so follow-up questions ("那它的价格呢？")
+        can resolve pronouns against prior turns. On exit the user is offered
+        to persist the conversation into anchor-point session memory.
+        """
         print("=" * 60)
         print("  RAG 对话模式")
         print(f"  索引: {self._config.vector_store_dir}")
@@ -200,25 +243,28 @@ class RAGSystem:
         )
         print(f"  LLM: {self._config.llm.model}")
         print()
-        print("  命令: /exit /clear /sources /stats")
-        print("  直接输入问题开始对话")
+        print("  命令: /exit /clear /sources /stats /save")
+        print("  直接输入问题开始对话（支持多轮上下文）")
         print("=" * 60)
 
         last_sources: list[str] = []
+        history: list[dict[str, str]] = []
 
         while True:
             try:
                 user_input = input("\n> ").strip()
             except (EOFError, KeyboardInterrupt):
                 print("\n再见。")
+                self._maybe_save_memory(history)
                 break
 
             if not user_input:
                 continue
 
             if user_input.startswith("/"):
-                handled = self._handle_command(user_input, last_sources)
+                handled = self._handle_command(user_input, last_sources, history)
                 if handled is None:
+                    self._maybe_save_memory(history)
                     break
                 last_sources = handled
                 continue
@@ -232,11 +278,37 @@ class RAGSystem:
                     last_sources = []
                     continue
 
-                messages = self._generator.build_rag_prompt(
+                # Build messages: system(+context) + recent history + current user.
+                base_messages = self._generator.build_rag_prompt(
                     user_input, result.chunks
                 )
-                answer = self._generator.generate(messages)
-                print(f"\n{answer}")
+                messages = (
+                    [base_messages[0]]
+                    + history[-_DEFAULT_CHAT_HISTORY_WINDOW:]
+                    + [base_messages[1]]
+                )
+                # Stream the answer token-by-token for responsiveness; fall
+                # back to blocking generate if the endpoint lacks streaming.
+                print()
+                answer_parts: list[str] = []
+                try:
+                    for token in self._generator.stream(messages):
+                        print(token, end="", flush=True)
+                        answer_parts.append(token)
+                    answer = "".join(answer_parts)
+                except RAGSystemError:
+                    if answer_parts:
+                        # Keep partial output rather than re-generating and
+                        # duplicating what was already printed.
+                        answer = "".join(answer_parts)
+                    else:
+                        answer = self._generator.generate(messages)
+                        print(answer, end="")
+                print()
+
+                # Record this turn for future context.
+                history.append({"role": "user", "content": user_input})
+                history.append({"role": "assistant", "content": answer})
                 last_sources = [c.source for c in result.chunks]
             except RAGSystemError as exc:
                 print(f"\n错误: {exc}")
@@ -247,7 +319,7 @@ class RAGSystem:
     # ------------------------------------------------------------------
 
     def _handle_command(
-        self, cmd: str, sources: list[str]
+        self, cmd: str, sources: list[str], history: list[dict[str, str]]
     ) -> Optional[list[str]]:
         cmd_lower = cmd.lower().strip()
 
@@ -275,8 +347,45 @@ class RAGSystem:
             print(f"  文件数: {len(self._store.sources)}")
             print(f"  块数: {self._store.count}")
             print(f"  嵌入维度: {self._store.dimension}")
+            print(f"  对话轮数: {len(history) // 2}")
+            return sources
+
+        if cmd_lower == "/save":
+            self._maybe_save_memory(history)
             return sources
 
         print(f"未知命令: {cmd}")
-        print("可用命令: /exit /clear /sources /stats")
+        print("可用命令: /exit /clear /sources /stats /save")
         return sources
+
+    def _maybe_save_memory(self, history: list[dict[str, str]]) -> None:
+        """Offer to persist the current conversation into anchor memory.
+
+        Wired into chat() exit paths so the anchor-memory feature is actually
+        reachable from normal usage, instead of requiring a separate
+        ``memory end`` invocation with manually pasted content. Only prompts
+        once per chat session (e.g. ``/save`` then ``/exit`` won't ask twice).
+        """
+        if not history:
+            return
+        if getattr(self, "_memory_prompted", False):
+            return
+        self._memory_prompted = True
+        try:
+            from .session_memory import SessionMemory
+
+            memory = SessionMemory(base_dir=Path.cwd())
+            if not memory.ask_enable_memory():
+                return
+            content = "\n".join(
+                f"{'用户' if m['role'] == 'user' else '助手'}: {m['content']}"
+                for m in history
+            )
+            result = memory.end_session(content=content)
+            print(
+                f"[锚点记忆] 已保存: {result.get('merged_count', 0)} 个提示词，"
+                f"会话文件 {result.get('session_file', '')}"
+            )
+        except Exception as exc:
+            logger.warning("failed to save session memory: %s", exc)
+            print(f"[锚点记忆] 保存失败: {exc}")

@@ -8,16 +8,25 @@ Workflow per session:
 """
 
 import json
+import logging
 import re
-from dataclasses import dataclass
+from collections import Counter
+from dataclasses import dataclass, field
 from datetime import date, datetime
 from pathlib import Path
-from typing import Optional
+from typing import Any, Optional
 
 from .config import load_rag_config
 from .errors import RAGSystemError
 from .llm import LLMGenerator
+from .memory_utils import (
+    make_slug as _make_slug,
+    merge_dedup as _merge_dedup,
+    parse_session_filename as _parse_session_filename,
+)
 from .vector_store import VectorStore
+
+logger = logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------------
 # Constants
@@ -28,6 +37,8 @@ _SESSIONS_DIR = "sessions"
 _PROMPT_INDEX_DIR = "prompt_index"
 _MAX_PROMPTS = 15
 _MIN_PROMPT_LEN = 4
+# CJK Unified Ideographs (basic + Ext A) for keyword extraction.
+_CJK_PATTERN = r"[\u4e00-\u9fff\u3400-\u4dbf]"
 
 
 # ---------------------------------------------------------------------------
@@ -52,10 +63,16 @@ class SessionMemory:
     """Manages the anchor-point memory lifecycle.
 
     *base_dir*: root of the rag-system project.
+
+    Embedder and prompt-store handles are cached on first use so that recall
+    does not reload the ~100MB local model on every call.
     """
 
     base_dir: Path
     _generator: Optional[LLMGenerator] = None
+    _embedder: Any = None
+    _prompt_store: Any = None
+    _embedder_init_failed: bool = False
 
     # ------------------------------------------------------------------
     # Directory properties
@@ -202,13 +219,23 @@ class SessionMemory:
         return versions
 
     def rollback_to(self, prompt_filename: str) -> bool:
-        """Rollback: set a specific merged file as active and re-index."""
+        """Restore a previous merged-prompt version as the active one.
+
+        This creates a new ``today-rollback.merged.txt`` that is a copy of the
+        selected version, so that ``_load_previous_merged`` (which picks the
+        most recent merged file by name sort) will treat it as current. Newer
+        merged files are *not* deleted — they remain queryable — but the
+        rolled-back copy becomes the effective "latest". The index is rebuilt
+        so recall reflects the restored prompt set.
+        """
         src = self.prompts_dir / prompt_filename
         if not src.exists():
             return False
         today = date.today().isoformat()
         rollback_file = self.prompts_dir / f"{today}-rollback.merged.txt"
         rollback_file.write_text(src.read_text(encoding="utf-8"))
+        # Invalidate cached store so the next recall sees the re-indexed data.
+        self._prompt_store = None
         self._reindex_prompts()
         return True
 
@@ -273,26 +300,23 @@ class SessionMemory:
         Extract entities: capitalized words, numbers, topic markers, and
         the first 5 words of each paragraph as anchor candidates.
         """
-        import re
-
         lines = [ln.strip() for ln in content.split("\n") if ln.strip()]
         candidates: list[str] = []
 
         for ln in lines:
             # Skip overly long lines, Q/A prefixes
             clean = re.sub(r"^(Q\d*[：:]|A\d*[：:]|\d+\.\s*)", "", ln)
-            # Extract 2-6 char Chinese words as potential keywords
-            words = re.findall(r"[一-鿿]{2,6}", clean)
+            # Extract 2-6 char Chinese words (basic + Ext A) as keywords.
+            words = re.findall(_CJK_PATTERN + r"{2,6}", clean)
             for w in words:
                 if len(w) >= 2:
                     candidates.append(w)
-            # Also grab short meaningful phrases (2-5 words)
-            phrases = re.findall(r"[一-鿿A-Za-z]{4,12}", clean)
+            # Also grab short meaningful phrases (CJK/latin, 4-12 chars).
+            phrases = re.findall(r"[\u4e00-\u9fff\u3400-\u4dbfA-Za-z]{4,12}", clean)
             for p in phrases:
                 candidates.append(p)
 
         # Dedup and sort by frequency
-        from collections import Counter
         freq = Counter(candidates)
         # Keep only entries that appear at least once, sorted by frequency desc
         result = [k for k, _ in freq.most_common(_MAX_PROMPTS * 2)]
@@ -321,43 +345,73 @@ class SessionMemory:
     # ------------------------------------------------------------------
 
     def _reindex_prompts(self) -> None:
-        """Ingest all .merged.txt files into prompt_index vector store."""
+        """Incrementally index new ``.merged.txt`` files into prompt_index.
+
+        Previously this re-embedded *every* merged file on each session end,
+        making N sessions cost O(N²) embeddings. Now it only embeds files
+        whose path is not already present in the store, and appends them.
+        """
         merged_files = sorted(self.prompts_dir.glob("*.merged.txt"))
         if not merged_files:
             return
 
-        from .documents import Document
+        embedder = self._get_embedder()
+        if embedder is None:
+            return
 
-        documents: list[Document] = []
+        from .documents import Document
+        from .splitter import create_splitter
+
+        config = load_rag_config()
+        splitter = create_splitter(config.chunking)
+
+        # Load existing store (and cache it) or create a fresh one.
+        index_file = self.prompt_index_dir / VectorStore.INDEX_FILENAME
+        if index_file.exists():
+            try:
+                store = VectorStore.load(str(self.prompt_index_dir))
+            except RAGSystemError:
+                logger.warning("prompt index corrupt, rebuilding from scratch")
+                store = VectorStore(embedder.dimension)
+            if store.dimension != embedder.dimension:
+                # embedding model changed — start over
+                store = VectorStore(embedder.dimension)
+        else:
+            store = VectorStore(embedder.dimension)
+
+        # Only embed merged files not already indexed (by source path).
+        new_docs: list[Document] = []
         for mf in merged_files:
+            source = str(mf)
+            if store.has_source(source):
+                continue
             text = mf.read_text(encoding="utf-8", errors="replace")
             if text.strip():
-                documents.append(
+                new_docs.append(
                     Document(
-                        path=str(mf),
+                        path=source,
                         content=text,
                         metadata={"type": "prompts", "session": mf.stem},
                     )
                 )
-        if not documents:
-            return
 
-        config = load_rag_config()
-        from .embeddings import create_embedder
-        from .splitter import create_splitter
+        if new_docs:
+            chunks = splitter.split_documents(new_docs)
+            if chunks:
+                embeddings = embedder.embed_documents([c.text for c in chunks])
+                store.add_documents(chunks, embeddings)
+                store.save(str(self.prompt_index_dir))
+                logger.info("indexed %d new prompt files", len(new_docs))
 
-        embedder = create_embedder(config.embedding)
-        splitter = create_splitter(config.chunking)
-        chunks = splitter.split_documents(documents)
-        if not chunks:
-            return
-
-        embeddings = embedder.embed_documents([c.text for c in chunks])
-        store = VectorStore(embedder.dimension)
-        store.add_documents(chunks, embeddings)
-        store.save(str(self.prompt_index_dir))
+        # Keep the in-memory handle cached so _search_prompts can reuse it.
+        self._prompt_store = store
 
         # Save session sources index for full-text fallback
+        self._save_sources_index()
+
+    def _save_sources_index(self) -> None:
+        """Persist the most recent session texts for full-text fallback."""
+        self.prompt_index_dir.mkdir(parents=True, exist_ok=True)
         sources_path = self.prompt_index_dir / "sources.json"
         session_files = sorted(self.sessions_dir.glob("*.md"))
         sources_data = {
@@ -374,16 +428,16 @@ class SessionMemory:
     # ------------------------------------------------------------------
 
     def _search_prompts(self, query: str, top_k: int = 5) -> list[dict[str, object]]:
-        """RAG search the prompt index."""
+        """RAG search the prompt index using cached embedder + store."""
         index_file = self.prompt_index_dir / VectorStore.INDEX_FILENAME
         if not index_file.exists():
             return []
 
-        config = load_rag_config()
-        from .embeddings import create_embedder
+        embedder = self._get_embedder()
+        store = self._get_prompt_store()
+        if embedder is None or store is None:
+            return []
 
-        embedder = create_embedder(config.embedding)
-        store = VectorStore.load(str(self.prompt_index_dir))
         query_vec = embedder.embed_query(query)
         results = store.search(query_vec, k=top_k)
 
@@ -430,70 +484,63 @@ class SessionMemory:
         return results[:top_k]
 
     # ------------------------------------------------------------------
-    # LLM access
+    # LLM / embedder / store access (cached)
     # ------------------------------------------------------------------
 
     def _get_generator(self) -> Optional[LLMGenerator]:
+        """Return a cached LLMGenerator, or None if unconfigured.
+
+        The previous implementation tried ``importlib.reload`` on the config
+        module after a failure, which cannot help (env vars do not change
+        mid-process) and only added confusion. We now fail fast to the
+        keyword-extraction fallback.
+        """
         if self._generator is not None:
             return self._generator
         try:
             config = load_rag_config()
             self._generator = LLMGenerator(config.llm)
             return self._generator
-        except RAGSystemError:
-            # Try fallback: load config again in case env vars changed
-            import importlib
-            from . import config as cfg_module
-            importlib.reload(cfg_module)
-            try:
-                config = cfg_module.load_rag_config()
-                self._generator = LLMGenerator(config.llm)
-                return self._generator
-            except RAGSystemError:
-                return None
+        except RAGSystemError as exc:
+            logger.info("LLM generator unavailable, using keyword fallback: %s", exc)
+            return None
+
+    def _get_embedder(self) -> Any:
+        """Return a cached embedder, or None if it cannot be constructed.
+
+        Caching avoids reloading the local sentence-transformers model
+        (~100MB) on every recall call.
+        """
+        if self._embedder is not None:
+            return self._embedder
+        if self._embedder_init_failed:
+            return None
+        try:
+            config = load_rag_config()
+            from .embeddings import create_embedder
+
+            self._embedder = create_embedder(config.embedding)
+            return self._embedder
+        except RAGSystemError as exc:
+            logger.warning("embedder unavailable for prompt index: %s", exc)
+            self._embedder_init_failed = True
+            return None
+
+    def _get_prompt_store(self) -> Any:
+        """Return a cached prompt-index VectorStore, loading from disk once."""
+        if self._prompt_store is not None:
+            return self._prompt_store
+        index_file = self.prompt_index_dir / VectorStore.INDEX_FILENAME
+        if not index_file.exists():
+            return None
+        try:
+            self._prompt_store = VectorStore.load(str(self.prompt_index_dir))
+            return self._prompt_store
+        except RAGSystemError as exc:
+            logger.warning("failed to load prompt index: %s", exc)
+            return None
 
 
-# ---------------------------------------------------------------------------
-# Helper functions
-# ---------------------------------------------------------------------------
+# Helper functions (_merge_dedup, _make_slug, _parse_session_filename) live in
+# .memory_utils so they can be unit-tested without importing numpy/faiss.
 
-
-def _merge_dedup(new_prompts: list[str], old_prompts: list[str]) -> list[str]:
-    """Merge new prompts with old, deduplicate by normalized text.
-
-    New prompts appear first.
-    """
-    seen: set[str] = set()
-    merged: list[str] = []
-
-    def _norm(p: str) -> str:
-        return re.sub(r"\s+", "", p.lower())
-
-    for p in new_prompts:
-        key = _norm(p)
-        if key not in seen:
-            seen.add(key)
-            merged.append(p)
-
-    for p in old_prompts:
-        key = _norm(p)
-        if key not in seen:
-            seen.add(key)
-            merged.append(p)
-
-    return merged
-
-
-def _make_slug(content: str, max_len: int = 30) -> str:
-    """Create a filename-safe slug from content."""
-    first_line = content.strip().split("\n")[0][:80]
-    slug = re.sub(r"[^\w一-鿿]+", "-", first_line.lower())
-    slug = slug.strip("-")
-    return slug[:max_len] if len(slug) > max_len else slug
-
-
-def _parse_session_filename(stem: str) -> tuple[str, str]:
-    """Parse '2026-06-28-my-slug' → ('2026-06-28', 'my-slug')."""
-    if "-" in stem[:10] and len(stem) > 11:
-        return stem[:10], stem[11:]
-    return "", stem

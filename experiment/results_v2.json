@@ -1,0 +1,8023 @@
+{
+  "config": {
+    "num_docs": 500,
+    "num_queries": 1000,
+    "top_k": 10,
+    "hybrid_alpha": 0.5,
+    "hybrid_candidates": 40,
+    "embedding_model": "BAAI/bge-small-zh-v1.5",
+    "embedding_dim": 512,
+    "used_fallback": false,
+    "strategies": [
+      "baseline",
+      "hybrid"
+    ],
+    "reranker_model": null
+  },
+  "per_query": [
+    {
+      "qid": 0,
+      "query": "时间序列最新进展与云计算发",
+      "query_type": "exact",
+      "relevant_source": "doc_0",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 1,
+      "query": "也迎来了新的机遇和挑战。本文",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_0",
+      "baseline_rank": -1,
+      "hybrid_rank": 9
+    },
+    {
+      "qid": 2,
+      "query": "面向数据挖掘的微服务架构平",
+      "query_type": "exact",
+      "relevant_source": "doc_1",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 3,
+      "query": "最新研究成果，提出了一种创新的解决",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_1",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 4,
+      "query": "基于人脸识别的迁移学习系统设计",
+      "query_type": "exact",
+      "relevant_source": "doc_2",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 5,
+      "query": "技术的快速发展，迁移学习领域也迎来",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_2",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 6,
+      "query": "面向数据挖掘的命名实体识别",
+      "query_type": "exact",
+      "relevant_source": "doc_3",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 7,
+      "query": "命名实体识别框架，有效解决",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_3",
+      "baseline_rank": 2,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 8,
+      "query": "基于排序算法的实时异常检测",
+      "query_type": "exact",
+      "relevant_source": "doc_4",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 9,
+      "query": "也迎来了新的机遇和挑战。本文从系",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_4",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 10,
+      "query": "联邦学习技术原理",
+      "query_type": "exact",
+      "relevant_source": "doc_5",
+      "baseline_rank": 4,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 11,
+      "query": "知识图谱策略进行针对性优化",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_5",
+      "baseline_rank": -1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 12,
+      "query": "大规模负载均衡系统架",
+      "query_type": "exact",
+      "relevant_source": "doc_6",
+      "baseline_rank": 0,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 13,
+      "query": "文详细介绍了负载均衡的核心原",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_6",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 14,
+      "query": "大规模数据库系统架构设计与优",
+      "query_type": "exact",
+      "relevant_source": "doc_7",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 15,
+      "query": "进展，重点分析了边缘计算",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_7",
+      "baseline_rank": -1,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 16,
+      "query": "面向搜索引擎的深度学习",
+      "query_type": "exact",
+      "relevant_source": "doc_8",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 17,
+      "query": "。通过分析深度学习的最新研",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_8",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 18,
+      "query": "下一代边缘计算：融合数据库的",
+      "query_type": "exact",
+      "relevant_source": "doc_9",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 19,
+      "query": "库技术的优化方案。经过大量",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_9",
+      "baseline_rank": -1,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 20,
+      "query": "目标检测在物联网中的应用与挑战",
+      "query_type": "exact",
+      "relevant_source": "doc_10",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 21,
+      "query": "统架构角度出发，设计了一套基于目标检测的",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_10",
+      "baseline_rank": 5,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 22,
+      "query": "基于自动化测试的图数据库系",
+      "query_type": "exact",
+      "relevant_source": "doc_11",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 23,
+      "query": "我们遇到了图数据库相关的性能瓶颈。",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_11",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 24,
+      "query": "知识图谱技术原理与对抗生成网络",
+      "query_type": "exact",
+      "relevant_source": "doc_12",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 25,
+      "query": "了一种结合对抗生成网络技",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_12",
+      "baseline_rank": 5,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 26,
+      "query": "基于API网关的大数据系统",
+      "query_type": "exact",
+      "relevant_source": "doc_13",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 27,
+      "query": "领域近年来的重要研究进展",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_13",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 28,
+      "query": "深入理解时间序列：从网络安全到",
+      "query_type": "exact",
+      "relevant_source": "doc_14",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 29,
+      "query": "发展，网络安全领域也迎来了新的机遇和",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_14",
+      "baseline_rank": -1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 30,
+      "query": "面向对抗生成网络",
+      "query_type": "exact",
+      "relevant_source": "doc_15",
+      "baseline_rank": 4,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 31,
+      "query": "。本文从系统架构角度",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_15",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 32,
+      "query": "回归分析在缓存系统",
+      "query_type": "exact",
+      "relevant_source": "doc_16",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 33,
+      "query": "归分析的缓存系统框架，有效解决了传统方法",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_16",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 34,
+      "query": "基于深度学习的缓",
+      "query_type": "exact",
+      "relevant_source": "doc_17",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 35,
+      "query": "套基于深度学习的缓存",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_17",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 36,
+      "query": "目标检测算法优化：排序算法视",
+      "query_type": "exact",
+      "relevant_source": "doc_18",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 37,
+      "query": "统部署过程中，我们遇到了排序算法相关的性",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_18",
+      "baseline_rank": 6,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 38,
+      "query": "异常检测技术原理与对抗",
+      "query_type": "exact",
+      "relevant_source": "doc_19",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 39,
+      "query": "检测技术的快速发展，对抗",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_19",
+      "baseline_rank": 7,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 40,
+      "query": "下一代设计模式：",
+      "query_type": "exact",
+      "relevant_source": "doc_20",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 41,
+      "query": "中，我们遇到了图像分割相关的性能瓶颈",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_20",
+      "baseline_rank": 5,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 42,
+      "query": "人脸识别技术原理与神经网络实践",
+      "query_type": "exact",
+      "relevant_source": "doc_21",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 43,
+      "query": "点分析了神经网络、服",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_21",
+      "baseline_rank": -1,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 44,
+      "query": "基于文本分类的数据库系统",
+      "query_type": "exact",
+      "relevant_source": "doc_22",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 45,
+      "query": "出发，设计了一套基于文本分类的数据库框架",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_22",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 46,
+      "query": "下一代时间序列：融合网络安全的",
+      "query_type": "exact",
+      "relevant_source": "doc_23",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 47,
+      "query": "种创新的解决方案。实验结果表明，该",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_23",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 48,
+      "query": "面向边缘计算的边",
+      "query_type": "exact",
+      "relevant_source": "doc_24",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 49,
+      "query": "针对当前边缘计算领域面临的计算效率和",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_24",
+      "baseline_rank": 2,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 50,
+      "query": "基于图像分割的人工智能系统设",
+      "query_type": "exact",
+      "relevant_source": "doc_25",
+      "baseline_rank": 1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 51,
+      "query": "本文综述了图像分割领",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_25",
+      "baseline_rank": 9,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 52,
+      "query": "大规模性能优化系统架构设",
+      "query_type": "exact",
+      "relevant_source": "doc_26",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 53,
+      "query": "究成果，提出了一种创新的解决",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_26",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 54,
+      "query": "图数据库在迁移学",
+      "query_type": "exact",
+      "relevant_source": "doc_27",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 55,
+      "query": "结合迁移学习技术的优化方案。经过大量实验",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_27",
+      "baseline_rank": 5,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 56,
+      "query": "基于命名实体识别的性能优化系",
+      "query_type": "exact",
+      "relevant_source": "doc_28",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 57,
+      "query": "量实验验证，该方案在区块",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_28",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 58,
+      "query": "时间序列技术原理与",
+      "query_type": "exact",
+      "relevant_source": "doc_29",
+      "baseline_rank": 1,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 59,
+      "query": "序列领域面临的计算效率和存储瓶颈问题",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_29",
+      "baseline_rank": 8,
+      "hybrid_rank": 3
+    },
+    {
+      "qid": 60,
+      "query": "面向性能优化的网络安",
+      "query_type": "exact",
+      "relevant_source": "doc_30",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 61,
+      "query": "理和关键技术。通过分析网络",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_30",
+      "baseline_rank": -1,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 62,
+      "query": "基于姿态估计的缓存系统系",
+      "query_type": "exact",
+      "relevant_source": "doc_31",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 63,
+      "query": "问题，本文提出了一种结合缓存",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_31",
+      "baseline_rank": 2,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 64,
+      "query": "下一代消息队列：融合推荐系统",
+      "query_type": "exact",
+      "relevant_source": "doc_32",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 65,
+      "query": "绍了消息队列的核心原理和关键技",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_32",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 66,
+      "query": "面向数据库的数据结构平",
+      "query_type": "exact",
+      "relevant_source": "doc_33",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 67,
+      "query": "战。本文从系统架构角度出发，设计了一套",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_33",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 68,
+      "query": "微服务架构技术原理与聚",
+      "query_type": "exact",
+      "relevant_source": "doc_34",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 69,
+      "query": "方案。经过大量实验验证，该",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_34",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 70,
+      "query": "面向关系抽取的姿态估计平",
+      "query_type": "exact",
+      "relevant_source": "doc_35",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 71,
+      "query": "，设计了一套基于关系抽",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_35",
+      "baseline_rank": -1,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 72,
+      "query": "大规模排序算法系",
+      "query_type": "exact",
+      "relevant_source": "doc_36",
+      "baseline_rank": 2,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 73,
+      "query": "算法系统部署过程中，我们遇到了消",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_36",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 74,
+      "query": "深入理解关系抽取：从联邦学习",
+      "query_type": "exact",
+      "relevant_source": "doc_37",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 75,
+      "query": "分析联邦学习的最新研究成果，提出了一",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_37",
+      "baseline_rank": 9,
+      "hybrid_rank": 3
+    },
+    {
+      "qid": 76,
+      "query": "深入理解负载均衡：从机器学习到",
+      "query_type": "exact",
+      "relevant_source": "doc_38",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 77,
+      "query": "述了负载均衡领域近年来的重要研究进展，重",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_38",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 78,
+      "query": "数据挖掘在人工智",
+      "query_type": "exact",
+      "relevant_source": "doc_39",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 79,
+      "query": "设计了一套基于数据挖掘的",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_39",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 80,
+      "query": "面向计算机视觉的深",
+      "query_type": "exact",
+      "relevant_source": "doc_40",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 81,
+      "query": "战。本文从系统架构角度出发，设计",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_40",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 82,
+      "query": "面向知识图谱的聚类分析平台",
+      "query_type": "exact",
+      "relevant_source": "doc_41",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 83,
+      "query": "统架构角度出发，设计了",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_41",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 84,
+      "query": "深入理解数据结构",
+      "query_type": "exact",
+      "relevant_source": "doc_42",
+      "baseline_rank": 3,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 85,
+      "query": "，我们遇到了目标检测相关的",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_42",
+      "baseline_rank": 3,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 86,
+      "query": "基于强化学习的实时物联网解决方",
+      "query_type": "exact",
+      "relevant_source": "doc_43",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 87,
+      "query": "和存储瓶颈问题，本文",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_43",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 88,
+      "query": "迁移学习在强化学习",
+      "query_type": "exact",
+      "relevant_source": "doc_44",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 89,
+      "query": "创新的解决方案。实验结果表明",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_44",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 90,
+      "query": "基于自然语言处理",
+      "query_type": "exact",
+      "relevant_source": "doc_45",
+      "baseline_rank": 8,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 91,
+      "query": "快速发展，神经网络领域也迎来了",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_45",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 92,
+      "query": "物联网技术原理与",
+      "query_type": "exact",
+      "relevant_source": "doc_46",
+      "baseline_rank": 0,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 93,
+      "query": "，我们遇到了物联网相关的性能瓶颈。通过",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_46",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 94,
+      "query": "基于区块链的知识图",
+      "query_type": "exact",
+      "relevant_source": "doc_47",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 95,
+      "query": "优化，系统吞吐量提升了四倍以上，",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_47",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 96,
+      "query": "面向图像分割的分布",
+      "query_type": "exact",
+      "relevant_source": "doc_48",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 97,
+      "query": "技术。通过分析分布式系统",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_48",
+      "baseline_rank": 1,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 98,
+      "query": "基于数据库的实时性能优",
+      "query_type": "exact",
+      "relevant_source": "doc_49",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 99,
+      "query": "荐系统策略进行针对性优化，系统吞",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_49",
+      "baseline_rank": 4,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 100,
+      "query": "情感分析技术原理与大数据实",
+      "query_type": "exact",
+      "relevant_source": "doc_50",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 101,
+      "query": "入神经网络策略进行针对性优化，",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_50",
+      "baseline_rank": 7,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 102,
+      "query": "人工智能最新进展与边缘计算发",
+      "query_type": "exact",
+      "relevant_source": "doc_51",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 103,
+      "query": "化，系统吞吐量提升了四倍",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_51",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 104,
+      "query": "降维算法算法优化：",
+      "query_type": "exact",
+      "relevant_source": "doc_52",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 105,
+      "query": "本文从系统架构角度出发，设计了",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_52",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 106,
+      "query": "下一代物联网：融",
+      "query_type": "exact",
+      "relevant_source": "doc_53",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 107,
+      "query": "联网领域近年来的重要研究进展，重",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_53",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 108,
+      "query": "自然语言处理在设计模式",
+      "query_type": "exact",
+      "relevant_source": "doc_54",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 109,
+      "query": "未来自然语言处理的发展",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_54",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 110,
+      "query": "情感分析在命名实体识别中的",
+      "query_type": "exact",
+      "relevant_source": "doc_55",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 111,
+      "query": "等关键技术。在此基础上，预测了未来网络",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_55",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 112,
+      "query": "基于数据库的区块链系统设",
+      "query_type": "exact",
+      "relevant_source": "doc_56",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 113,
+      "query": "遇和挑战。本文从系统架构角度出",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_56",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 114,
+      "query": "下一代神经网络：",
+      "query_type": "exact",
+      "relevant_source": "doc_57",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 115,
+      "query": "。在此基础上，预测了未来推荐",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_57",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 116,
+      "query": "下一代深度学习：融合三维重建的",
+      "query_type": "exact",
+      "relevant_source": "doc_58",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 117,
+      "query": "、数据库等关键技术。在此基",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_58",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 118,
+      "query": "大规模关系抽取系统架构设计",
+      "query_type": "exact",
+      "relevant_source": "doc_59",
+      "baseline_rank": 2,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 119,
+      "query": "系统架构角度出发，设计了一套基于",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_59",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 120,
+      "query": "搜索引擎最新进展与神经网络发",
+      "query_type": "exact",
+      "relevant_source": "doc_60",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 121,
+      "query": "过程中，我们遇到了神经网络相关的性能瓶颈",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_60",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 122,
+      "query": "缓存系统算法优化：性能优化视",
+      "query_type": "exact",
+      "relevant_source": "doc_61",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 123,
+      "query": "缓存系统领域近年来的重要研究进展，重点",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_61",
+      "baseline_rank": 6,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 124,
+      "query": "深入理解目标检测：从分布",
+      "query_type": "exact",
+      "relevant_source": "doc_62",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 125,
+      "query": "测了未来机器翻译的发展方向",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_62",
+      "baseline_rank": 5,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 126,
+      "query": "深入理解搜索引擎：",
+      "query_type": "exact",
+      "relevant_source": "doc_63",
+      "baseline_rank": 2,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 127,
+      "query": "索引擎领域面临的计算效率和存",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_63",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 128,
+      "query": "图数据库最新进展与网",
+      "query_type": "exact",
+      "relevant_source": "doc_64",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 129,
+      "query": "分析了网络安全、联邦学习等关键技术。在此",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_64",
+      "baseline_rank": 2,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 130,
+      "query": "面向异常检测的关系抽",
+      "query_type": "exact",
+      "relevant_source": "doc_65",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 131,
+      "query": "过大量实验验证，该方案在人工智能",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_65",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 132,
+      "query": "基于聚类分析的分布式系统系",
+      "query_type": "exact",
+      "relevant_source": "doc_66",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 133,
+      "query": "过分析分布式系统的最新",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_66",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 134,
+      "query": "设计模式最新进展与",
+      "query_type": "exact",
+      "relevant_source": "doc_67",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 135,
+      "query": "本文综述了设计模式领域近年来",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_67",
+      "baseline_rank": 2,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 136,
+      "query": "大数据最新进展与排序算法发展趋",
+      "query_type": "exact",
+      "relevant_source": "doc_68",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 137,
+      "query": "分析了排序算法、负载均衡等关",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_68",
+      "baseline_rank": -1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 138,
+      "query": "基于文本分类的实时",
+      "query_type": "exact",
+      "relevant_source": "doc_69",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 139,
+      "query": "领域面临的计算效率和存",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_69",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 140,
+      "query": "深度学习技术原理与人",
+      "query_type": "exact",
+      "relevant_source": "doc_70",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 141,
+      "query": "提出了一种结合人工智能技术的优化方",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_70",
+      "baseline_rank": 5,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 142,
+      "query": "基于网络安全的实时设计模式解",
+      "query_type": "exact",
+      "relevant_source": "doc_71",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 143,
+      "query": "络安全领域近年来的重",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_71",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 144,
+      "query": "人工智能技术原理",
+      "query_type": "exact",
+      "relevant_source": "doc_72",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 145,
+      "query": "重点分析了云计算、计算机视觉等关键技",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_72",
+      "baseline_rank": 2,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 146,
+      "query": "深度学习技术原理与",
+      "query_type": "exact",
+      "relevant_source": "doc_73",
+      "baseline_rank": 8,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 147,
+      "query": "识别策略进行针对性优化，系统吞吐量提升",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_73",
+      "baseline_rank": -1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 148,
+      "query": "微服务架构在深度学习中的应",
+      "query_type": "exact",
+      "relevant_source": "doc_74",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 149,
+      "query": "题，本文提出了一种结",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_74",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 150,
+      "query": "基于大数据的回归分析",
+      "query_type": "exact",
+      "relevant_source": "doc_75",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 151,
+      "query": "提出了一种结合回归分析技术的优化",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_75",
+      "baseline_rank": 5,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 152,
+      "query": "自动化测试技术原理",
+      "query_type": "exact",
+      "relevant_source": "doc_76",
+      "baseline_rank": 3,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 153,
+      "query": "计了一套基于自动化测试的图像分割框架",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_76",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 154,
+      "query": "网络安全技术原理与",
+      "query_type": "exact",
+      "relevant_source": "doc_77",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 155,
+      "query": "链技术的优化方案。经过大量实验验证，",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_77",
+      "baseline_rank": 3,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 156,
+      "query": "强化学习最新进展与聚",
+      "query_type": "exact",
+      "relevant_source": "doc_78",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 157,
+      "query": "，设计了一套基于强化学习的聚类分",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_78",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 158,
+      "query": "降维算法算法优化：分",
+      "query_type": "exact",
+      "relevant_source": "doc_79",
+      "baseline_rank": 0,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 159,
+      "query": "的快速发展，分布式系统领域也",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_79",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 160,
+      "query": "深入理解物联网：从对抗生",
+      "query_type": "exact",
+      "relevant_source": "doc_80",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 161,
+      "query": "网络领域也迎来了新的机遇和挑战。本",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_80",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 162,
+      "query": "大规模机器学习系统架",
+      "query_type": "exact",
+      "relevant_source": "doc_81",
+      "baseline_rank": 1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 163,
+      "query": "机器学习领域面临的计算效",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_81",
+      "baseline_rank": 2,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 164,
+      "query": "面向计算机视觉的自动化测试平",
+      "query_type": "exact",
+      "relevant_source": "doc_82",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 165,
+      "query": "们遇到了自动化测试相关的性能瓶颈",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_82",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 166,
+      "query": "基于回归分析的机器翻译系",
+      "query_type": "exact",
+      "relevant_source": "doc_83",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 167,
+      "query": "一种结合机器翻译技术的",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_83",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 168,
+      "query": "基于区块链的人脸识别",
+      "query_type": "exact",
+      "relevant_source": "doc_84",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 169,
+      "query": "研究进展，重点分析了人脸识",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_84",
+      "baseline_rank": 7,
+      "hybrid_rank": 3
+    },
+    {
+      "qid": 170,
+      "query": "基于迁移学习的实时API网关解",
+      "query_type": "exact",
+      "relevant_source": "doc_85",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 171,
+      "query": "关键技术。在此基础上，预测了未来缓存系",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_85",
+      "baseline_rank": -1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 172,
+      "query": "深入理解命名实体识别：",
+      "query_type": "exact",
+      "relevant_source": "doc_86",
+      "baseline_rank": 1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 173,
+      "query": "提出了一种结合云计算技",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_86",
+      "baseline_rank": -1,
+      "hybrid_rank": 4
+    },
+    {
+      "qid": 174,
+      "query": "面向深度学习的排序算",
+      "query_type": "exact",
+      "relevant_source": "doc_87",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 175,
+      "query": "进展，重点分析了排序",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_87",
+      "baseline_rank": 4,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 176,
+      "query": "深入理解回归分析：从数据结构",
+      "query_type": "exact",
+      "relevant_source": "doc_88",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 177,
+      "query": "颈问题，本文提出了一种结合数据结构技术",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_88",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 178,
+      "query": "下一代迁移学习：融合计算机视",
+      "query_type": "exact",
+      "relevant_source": "doc_89",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 179,
+      "query": "实验验证，该方案在聚类分析场景",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_89",
+      "baseline_rank": -1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 180,
+      "query": "面向聚类分析的云计算平",
+      "query_type": "exact",
+      "relevant_source": "doc_90",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 181,
+      "query": "颈问题，本文提出了一种结合云计算",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_90",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 182,
+      "query": "聚类分析最新进展与强",
+      "query_type": "exact",
+      "relevant_source": "doc_91",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 183,
+      "query": "进展，重点分析了强化学习、缓存",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_91",
+      "baseline_rank": 3,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 184,
+      "query": "基于微服务架构的实时物",
+      "query_type": "exact",
+      "relevant_source": "doc_92",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 185,
+      "query": "战。本文从系统架构角度出发，设",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_92",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 186,
+      "query": "面向三维重建的目标检",
+      "query_type": "exact",
+      "relevant_source": "doc_93",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 187,
+      "query": "析目标检测的最新研究成果，提出",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_93",
+      "baseline_rank": 7,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 188,
+      "query": "下一代消息队列：融合图数",
+      "query_type": "exact",
+      "relevant_source": "doc_94",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 189,
+      "query": "预测了未来迁移学习的发展方向和潜在应用场",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_94",
+      "baseline_rank": -1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 190,
+      "query": "异常检测算法优化：缓存系统视角",
+      "query_type": "exact",
+      "relevant_source": "doc_95",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 191,
+      "query": "统架构角度出发，设计了一套",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_95",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 192,
+      "query": "基于命名实体识别的情感分析",
+      "query_type": "exact",
+      "relevant_source": "doc_96",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 193,
+      "query": "问题，本文提出了一种结合情感",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_96",
+      "baseline_rank": 0,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 194,
+      "query": "大规模命名实体识别系统架构设",
+      "query_type": "exact",
+      "relevant_source": "doc_97",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 195,
+      "query": "。通过分析聚类分析的最",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_97",
+      "baseline_rank": -1,
+      "hybrid_rank": 3
+    },
+    {
+      "qid": 196,
+      "query": "深入理解性能优化：从推",
+      "query_type": "exact",
+      "relevant_source": "doc_98",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 197,
+      "query": "架构角度出发，设计了一套基于性能优化",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_98",
+      "baseline_rank": 2,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 198,
+      "query": "容器技术算法优化：机",
+      "query_type": "exact",
+      "relevant_source": "doc_99",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 199,
+      "query": "此基础上，预测了未来推荐系统的发展方",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_99",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 200,
+      "query": "下一代自动化测试",
+      "query_type": "exact",
+      "relevant_source": "doc_100",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 201,
+      "query": "算机视觉框架，有效解决了传统方法存",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_100",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 202,
+      "query": "基于排序算法的实时降维",
+      "query_type": "exact",
+      "relevant_source": "doc_101",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 203,
+      "query": "和挑战。本文从系统架构角度出",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_101",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 204,
+      "query": "基于容器技术的异常",
+      "query_type": "exact",
+      "relevant_source": "doc_102",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 205,
+      "query": "系统吞吐量提升了四倍以上，延迟降",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_102",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 206,
+      "query": "数据挖掘算法优化：区块链视",
+      "query_type": "exact",
+      "relevant_source": "doc_103",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 207,
+      "query": "新研究成果，提出了一种创",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_103",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 208,
+      "query": "图像分割技术原理与推荐系",
+      "query_type": "exact",
+      "relevant_source": "doc_104",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 209,
+      "query": "我们遇到了推荐系统相关的性能",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_104",
+      "baseline_rank": -1,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 210,
+      "query": "大规模聚类分析系统架",
+      "query_type": "exact",
+      "relevant_source": "doc_105",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 211,
+      "query": "对性优化，系统吞吐量提升了四倍以",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_105",
+      "baseline_rank": 5,
+      "hybrid_rank": 6
+    },
+    {
+      "qid": 212,
+      "query": "面向三维重建的数据结构平台构",
+      "query_type": "exact",
+      "relevant_source": "doc_106",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 213,
+      "query": "维重建系统部署过程中，我们遇到了数",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_106",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 214,
+      "query": "网络安全最新进展与设计模式发展",
+      "query_type": "exact",
+      "relevant_source": "doc_107",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 215,
+      "query": "架构角度出发，设计了一套基于网络",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_107",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 216,
+      "query": "面向时间序列的知识图谱平台构",
+      "query_type": "exact",
+      "relevant_source": "doc_108",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 217,
+      "query": "引入自动化测试策略进",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_108",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 218,
+      "query": "基于时间序列的推荐系统系统",
+      "query_type": "exact",
+      "relevant_source": "doc_109",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 219,
+      "query": "案。经过大量实验验证，该方案在知识图",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_109",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 220,
+      "query": "面向推荐系统的知识",
+      "query_type": "exact",
+      "relevant_source": "doc_110",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 221,
+      "query": "了推荐系统的核心原理和关键",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_110",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 222,
+      "query": "微服务架构技术原理与容器技",
+      "query_type": "exact",
+      "relevant_source": "doc_111",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 223,
+      "query": "快速发展，容器技术领域也迎来了新的机遇和",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_111",
+      "baseline_rank": 9,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 224,
+      "query": "面向计算机视觉的",
+      "query_type": "exact",
+      "relevant_source": "doc_112",
+      "baseline_rank": -1,
+      "hybrid_rank": 6
+    },
+    {
+      "qid": 225,
+      "query": "入强化学习策略进行针对性优化，系统吞吐量",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_112",
+      "baseline_rank": 3,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 226,
+      "query": "基于强化学习的实时自然语言处",
+      "query_type": "exact",
+      "relevant_source": "doc_113",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 227,
+      "query": "，预测了未来强化学习的发展方向",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_113",
+      "baseline_rank": 2,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 228,
+      "query": "基于降维算法的实时机器学习解",
+      "query_type": "exact",
+      "relevant_source": "doc_114",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 229,
+      "query": "法系统部署过程中，我",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_114",
+      "baseline_rank": 5,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 230,
+      "query": "基于人工智能的实时",
+      "query_type": "exact",
+      "relevant_source": "doc_115",
+      "baseline_rank": 1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 231,
+      "query": "们遇到了API网关相关的性",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_115",
+      "baseline_rank": 2,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 232,
+      "query": "下一代机器翻译：融合设",
+      "query_type": "exact",
+      "relevant_source": "doc_116",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 233,
+      "query": "和挑战。本文从系统架构角度出发",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_116",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 234,
+      "query": "文本分类算法优化：数据挖掘视",
+      "query_type": "exact",
+      "relevant_source": "doc_117",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 235,
+      "query": "掘的最新研究成果，提出了一种创新的解决方",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_117",
+      "baseline_rank": -1,
+      "hybrid_rank": 7
+    },
+    {
+      "qid": 236,
+      "query": "基于边缘计算的实时负",
+      "query_type": "exact",
+      "relevant_source": "doc_118",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 237,
+      "query": "来了新的机遇和挑战。",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_118",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 238,
+      "query": "对抗生成网络在微服务架构中的应",
+      "query_type": "exact",
+      "relevant_source": "doc_119",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 239,
+      "query": "成网络系统部署过程中，我们遇",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_119",
+      "baseline_rank": 7,
+      "hybrid_rank": 4
+    },
+    {
+      "qid": 240,
+      "query": "基于人脸识别的目标检测系统设",
+      "query_type": "exact",
+      "relevant_source": "doc_120",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 241,
+      "query": "识别系统部署过程中，我",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_120",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 242,
+      "query": "微服务架构最新进展与",
+      "query_type": "exact",
+      "relevant_source": "doc_121",
+      "baseline_rank": 6,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 243,
+      "query": "抗生成网络相关的性能瓶颈。通",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_121",
+      "baseline_rank": 5,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 244,
+      "query": "大规模缓存系统系统架构设计",
+      "query_type": "exact",
+      "relevant_source": "doc_122",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 245,
+      "query": "颈。通过引入对抗生成网络策",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_122",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 246,
+      "query": "基于知识图谱的性能优化系统设计",
+      "query_type": "exact",
+      "relevant_source": "doc_123",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 247,
+      "query": "优化相关的性能瓶颈。通过引入强化学",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_123",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 248,
+      "query": "大规模机器学习系统",
+      "query_type": "exact",
+      "relevant_source": "doc_124",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 249,
+      "query": "和挑战。本文从系统架构角度出发，设",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_124",
+      "baseline_rank": 2,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 250,
+      "query": "异常检测在计算机视觉中的应",
+      "query_type": "exact",
+      "relevant_source": "doc_125",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 251,
+      "query": "介绍了异常检测的核心原理和关",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_125",
+      "baseline_rank": 1,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 252,
+      "query": "推荐系统技术原理",
+      "query_type": "exact",
+      "relevant_source": "doc_126",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 253,
+      "query": "荐系统的物联网框架，有",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_126",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 254,
+      "query": "下一代微服务架构",
+      "query_type": "exact",
+      "relevant_source": "doc_127",
+      "baseline_rank": 3,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 255,
+      "query": "务架构的情感分析框架，有效解决",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_127",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 256,
+      "query": "大规模对抗生成网络",
+      "query_type": "exact",
+      "relevant_source": "doc_128",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 257,
+      "query": "出发，设计了一套基于对抗",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_128",
+      "baseline_rank": 3,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 258,
+      "query": "基于姿态估计的姿态估计",
+      "query_type": "exact",
+      "relevant_source": "doc_129",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 259,
+      "query": "文从系统架构角度出发，设",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_129",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 260,
+      "query": "消息队列最新进展与分",
+      "query_type": "exact",
+      "relevant_source": "doc_130",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 261,
+      "query": "，重点分析了分布式系统、人脸识别等关",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_130",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 262,
+      "query": "深入理解回归分析：从边缘计算",
+      "query_type": "exact",
+      "relevant_source": "doc_131",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 263,
+      "query": "算的最新研究成果，提出了一",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_131",
+      "baseline_rank": 1,
+      "hybrid_rank": 3
+    },
+    {
+      "qid": 264,
+      "query": "基于人脸识别的降维算法系统设",
+      "query_type": "exact",
+      "relevant_source": "doc_132",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 265,
+      "query": "的优化方案。经过大量实验",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_132",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 266,
+      "query": "回归分析在姿态估计中",
+      "query_type": "exact",
+      "relevant_source": "doc_133",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 267,
+      "query": "的优化方案。经过大量实验验证，该方案在云",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_133",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 268,
+      "query": "基于机器翻译的迁移学习系统设",
+      "query_type": "exact",
+      "relevant_source": "doc_134",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 269,
+      "query": "析了迁移学习、聚类分",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_134",
+      "baseline_rank": 3,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 270,
+      "query": "异常检测算法优化：负载",
+      "query_type": "exact",
+      "relevant_source": "doc_135",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 271,
+      "query": "均衡的最新研究成果，提出了一种创新的解",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_135",
+      "baseline_rank": 2,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 272,
+      "query": "迁移学习技术原理与服务网格实",
+      "query_type": "exact",
+      "relevant_source": "doc_136",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 273,
+      "query": "相关的性能瓶颈。通过",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_136",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 274,
+      "query": "区块链最新进展与数据结",
+      "query_type": "exact",
+      "relevant_source": "doc_137",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 275,
+      "query": "的重要研究进展，重点分析了数",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_137",
+      "baseline_rank": 4,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 276,
+      "query": "基于机器翻译的实时",
+      "query_type": "exact",
+      "relevant_source": "doc_138",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 277,
+      "query": "析等关键技术。在此基础",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_138",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 278,
+      "query": "知识图谱最新进展与缓",
+      "query_type": "exact",
+      "relevant_source": "doc_139",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 279,
+      "query": "统相关的性能瓶颈。通过引入推荐",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_139",
+      "baseline_rank": -1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 280,
+      "query": "下一代推荐系统：融合性",
+      "query_type": "exact",
+      "relevant_source": "doc_140",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 281,
+      "query": "瓶颈。通过引入对抗生成",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_140",
+      "baseline_rank": -1,
+      "hybrid_rank": 3
+    },
+    {
+      "qid": 282,
+      "query": "负载均衡技术原理与机器学",
+      "query_type": "exact",
+      "relevant_source": "doc_141",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 283,
+      "query": "进行针对性优化，系统吞吐量提升了四",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_141",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 284,
+      "query": "大数据最新进展与API网关",
+      "query_type": "exact",
+      "relevant_source": "doc_142",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 285,
+      "query": "键技术。在此基础上，预测了未来负",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_142",
+      "baseline_rank": 7,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 286,
+      "query": "面向降维算法的知识图谱平台构",
+      "query_type": "exact",
+      "relevant_source": "doc_143",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 287,
+      "query": "架构角度出发，设计了一",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_143",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 288,
+      "query": "数据库算法优化：推荐",
+      "query_type": "exact",
+      "relevant_source": "doc_144",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 289,
+      "query": "点分析了推荐系统、数据结构等关键技",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_144",
+      "baseline_rank": 4,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 290,
+      "query": "性能优化算法优化：推",
+      "query_type": "exact",
+      "relevant_source": "doc_145",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 291,
+      "query": "行针对性优化，系统吞吐量提升",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_145",
+      "baseline_rank": -1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 292,
+      "query": "基于机器学习的实时",
+      "query_type": "exact",
+      "relevant_source": "doc_146",
+      "baseline_rank": 3,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 293,
+      "query": "设计了一套基于机器学习的",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_146",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 294,
+      "query": "消息队列算法优化：聚类分析",
+      "query_type": "exact",
+      "relevant_source": "doc_147",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 295,
+      "query": "队列领域近年来的重要研究进",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_147",
+      "baseline_rank": 6,
+      "hybrid_rank": 4
+    },
+    {
+      "qid": 296,
+      "query": "面向关系抽取的API网关",
+      "query_type": "exact",
+      "relevant_source": "doc_148",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 297,
+      "query": "取领域面临的计算效率和存",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_148",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 298,
+      "query": "API网关最新进展与降维算",
+      "query_type": "exact",
+      "relevant_source": "doc_149",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 299,
+      "query": "方案。经过大量实验验证，",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_149",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 300,
+      "query": "大规模数据挖掘系统架构设计与",
+      "query_type": "exact",
+      "relevant_source": "doc_150",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 301,
+      "query": "云计算的最新研究成果，提出了一种创新的",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_150",
+      "baseline_rank": 6,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 302,
+      "query": "设计模式技术原理与机",
+      "query_type": "exact",
+      "relevant_source": "doc_151",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 303,
+      "query": "统架构角度出发，设计了一套基于设",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_151",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 304,
+      "query": "下一代大数据：融合设计模式的",
+      "query_type": "exact",
+      "relevant_source": "doc_152",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 305,
+      "query": "年来的重要研究进展，重点分析了设计",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_152",
+      "baseline_rank": -1,
+      "hybrid_rank": 3
+    },
+    {
+      "qid": 306,
+      "query": "姿态估计最新进展与图",
+      "query_type": "exact",
+      "relevant_source": "doc_153",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 307,
+      "query": "系统架构角度出发，设计了",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_153",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 308,
+      "query": "面向服务网格的区块链平",
+      "query_type": "exact",
+      "relevant_source": "doc_154",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 309,
+      "query": "域也迎来了新的机遇和挑战",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_154",
+      "baseline_rank": -1,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 310,
+      "query": "知识图谱最新进展与深",
+      "query_type": "exact",
+      "relevant_source": "doc_155",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 311,
+      "query": "也迎来了新的机遇和挑战。本文从系统",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_155",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 312,
+      "query": "时间序列在性能优",
+      "query_type": "exact",
+      "relevant_source": "doc_156",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 313,
+      "query": "重点分析了性能优化、",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_156",
+      "baseline_rank": 2,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 314,
+      "query": "大规模图数据库系统架构设计与优",
+      "query_type": "exact",
+      "relevant_source": "doc_157",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 315,
+      "query": "的快速发展，情感分析领域也",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_157",
+      "baseline_rank": -1,
+      "hybrid_rank": 3
+    },
+    {
+      "qid": 316,
+      "query": "基于自然语言处理的搜索引擎系",
+      "query_type": "exact",
+      "relevant_source": "doc_158",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 317,
+      "query": "过引入情感分析策略进行针对性优化，系",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_158",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 318,
+      "query": "文本分类在计算机视觉中的应用与",
+      "query_type": "exact",
+      "relevant_source": "doc_159",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 319,
+      "query": "的机遇和挑战。本文从系统架构角度出发，设",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_159",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 320,
+      "query": "深入理解容器技术：从目标检测到",
+      "query_type": "exact",
+      "relevant_source": "doc_160",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 321,
+      "query": "目标检测的最新研究成果，提出了一种",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_160",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 322,
+      "query": "下一代图像分割：融合性能优化的",
+      "query_type": "exact",
+      "relevant_source": "doc_161",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 323,
+      "query": "域近年来的重要研究进展",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_161",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 324,
+      "query": "数据挖掘算法优化",
+      "query_type": "exact",
+      "relevant_source": "doc_162",
+      "baseline_rank": 2,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 325,
+      "query": "，系统吞吐量提升了四倍以上",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_162",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 326,
+      "query": "下一代消息队列：融合人脸",
+      "query_type": "exact",
+      "relevant_source": "doc_163",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 327,
+      "query": "综述了消息队列领域近年来的重",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_163",
+      "baseline_rank": 5,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 328,
+      "query": "深入理解自然语言处理：",
+      "query_type": "exact",
+      "relevant_source": "doc_164",
+      "baseline_rank": 1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 329,
+      "query": "本文从系统架构角度出发，设计",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_164",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 330,
+      "query": "深入理解搜索引擎：从",
+      "query_type": "exact",
+      "relevant_source": "doc_165",
+      "baseline_rank": 3,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 331,
+      "query": "基于搜索引擎的聚类分析框架，有效解",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_165",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 332,
+      "query": "基于图像分割的实时计算机视觉解",
+      "query_type": "exact",
+      "relevant_source": "doc_166",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 333,
+      "query": "引入网络安全策略进行针对性优化，系统",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_166",
+      "baseline_rank": -1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 334,
+      "query": "降维算法在姿态估计",
+      "query_type": "exact",
+      "relevant_source": "doc_167",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 335,
+      "query": "统架构角度出发，设计了",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_167",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 336,
+      "query": "图数据库算法优化：排序算",
+      "query_type": "exact",
+      "relevant_source": "doc_168",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 337,
+      "query": "案。实验结果表明，该方法在图数据库指",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_168",
+      "baseline_rank": 3,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 338,
+      "query": "下一代回归分析：融合数据挖",
+      "query_type": "exact",
+      "relevant_source": "doc_169",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 339,
+      "query": "从系统架构角度出发，",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_169",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 340,
+      "query": "迁移学习技术原理与云计算实践",
+      "query_type": "exact",
+      "relevant_source": "doc_170",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 341,
+      "query": "过大量实验验证，该方案在机器翻译场",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_170",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 342,
+      "query": "容器技术最新进展与计算",
+      "query_type": "exact",
+      "relevant_source": "doc_171",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 343,
+      "query": "计算机视觉、自然语言处",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_171",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 344,
+      "query": "基于设计模式的目标检测",
+      "query_type": "exact",
+      "relevant_source": "doc_172",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 345,
+      "query": "了目标检测相关的性能",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_172",
+      "baseline_rank": 1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 346,
+      "query": "降维算法最新进展与消息队列发展",
+      "query_type": "exact",
+      "relevant_source": "doc_173",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 347,
+      "query": "要研究进展，重点分析了消息队列",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_173",
+      "baseline_rank": -1,
+      "hybrid_rank": 8
+    },
+    {
+      "qid": 348,
+      "query": "下一代机器翻译：融",
+      "query_type": "exact",
+      "relevant_source": "doc_174",
+      "baseline_rank": 0,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 349,
+      "query": "分类的最新研究成果，提",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_174",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 350,
+      "query": "迁移学习最新进展与设计",
+      "query_type": "exact",
+      "relevant_source": "doc_175",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 351,
+      "query": "心原理和关键技术。通过分析设计模式的最",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_175",
+      "baseline_rank": 1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 352,
+      "query": "下一代数据库：融合数据挖掘",
+      "query_type": "exact",
+      "relevant_source": "doc_176",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 353,
+      "query": "明，该方法在回归分析指标上取得了显著提",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_176",
+      "baseline_rank": -1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 354,
+      "query": "性能优化在回归分析中的应用与",
+      "query_type": "exact",
+      "relevant_source": "doc_177",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 355,
+      "query": "速发展，回归分析领域也迎来了新的机遇和",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_177",
+      "baseline_rank": 8,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 356,
+      "query": "情感分析最新进展与关",
+      "query_type": "exact",
+      "relevant_source": "doc_178",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 357,
+      "query": "于情感分析的关系抽取框架，",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_178",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 358,
+      "query": "基于人脸识别的迁移学习",
+      "query_type": "exact",
+      "relevant_source": "doc_179",
+      "baseline_rank": 2,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 359,
+      "query": "统吞吐量提升了四倍以",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_179",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 360,
+      "query": "基于API网关的强化学习系",
+      "query_type": "exact",
+      "relevant_source": "doc_180",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 361,
+      "query": "文从系统架构角度出发，设计了",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_180",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 362,
+      "query": "负载均衡最新进展与强",
+      "query_type": "exact",
+      "relevant_source": "doc_181",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 363,
+      "query": "强化学习相关的性能瓶颈。通过",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_181",
+      "baseline_rank": 5,
+      "hybrid_rank": 3
+    },
+    {
+      "qid": 364,
+      "query": "基于性能优化的图像分割系",
+      "query_type": "exact",
+      "relevant_source": "doc_182",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 365,
+      "query": "分割技术的优化方案。经过大量",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_182",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 366,
+      "query": "基于搜索引擎的实时",
+      "query_type": "exact",
+      "relevant_source": "doc_183",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 367,
+      "query": "擎领域近年来的重要研究进展，重点",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_183",
+      "baseline_rank": -1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 368,
+      "query": "基于人工智能的实",
+      "query_type": "exact",
+      "relevant_source": "doc_184",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 369,
+      "query": "关键技术。通过分析聚类分析的最新研究成果",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_184",
+      "baseline_rank": 2,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 370,
+      "query": "物联网算法优化：关",
+      "query_type": "exact",
+      "relevant_source": "doc_185",
+      "baseline_rank": 0,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 371,
+      "query": "对性优化，系统吞吐量提升",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_185",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 372,
+      "query": "面向性能优化的自然语言",
+      "query_type": "exact",
+      "relevant_source": "doc_186",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 373,
+      "query": "快速发展，自然语言处理领域也迎",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_186",
+      "baseline_rank": 2,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 374,
+      "query": "基于图数据库的联邦学习",
+      "query_type": "exact",
+      "relevant_source": "doc_187",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 375,
+      "query": "方案。实验结果表明，该方法在降维算法指标",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_187",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 376,
+      "query": "时间序列技术原理与姿态估计实",
+      "query_type": "exact",
+      "relevant_source": "doc_188",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 377,
+      "query": "种结合姿态估计技术的优化",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_188",
+      "baseline_rank": 4,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 378,
+      "query": "基于图像分割的人工智能系",
+      "query_type": "exact",
+      "relevant_source": "doc_189",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 379,
+      "query": "度出发，设计了一套基于图像分割的",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_189",
+      "baseline_rank": 8,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 380,
+      "query": "云计算技术原理与对抗生成网络",
+      "query_type": "exact",
+      "relevant_source": "doc_190",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 381,
+      "query": "性能瓶颈。通过引入云计",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_190",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 382,
+      "query": "排序算法最新进展与",
+      "query_type": "exact",
+      "relevant_source": "doc_191",
+      "baseline_rank": 5,
+      "hybrid_rank": 4
+    },
+    {
+      "qid": 383,
+      "query": "关的性能瓶颈。通过引入命名实体识别策",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_191",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 384,
+      "query": "面向情感分析的情感分析平",
+      "query_type": "exact",
+      "relevant_source": "doc_192",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 385,
+      "query": "设计了一套基于情感分析的情感分",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_192",
+      "baseline_rank": 3,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 386,
+      "query": "边缘计算技术原理与物联",
+      "query_type": "exact",
+      "relevant_source": "doc_193",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 387,
+      "query": "新研究成果，提出了一种创新的解",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_193",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 388,
+      "query": "面向知识图谱的自",
+      "query_type": "exact",
+      "relevant_source": "doc_194",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 389,
+      "query": "大量实验验证，该方案在",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_194",
+      "baseline_rank": 3,
+      "hybrid_rank": 4
+    },
+    {
+      "qid": 390,
+      "query": "下一代人工智能：融合图数据库的",
+      "query_type": "exact",
+      "relevant_source": "doc_195",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 391,
+      "query": "术。在此基础上，预测了未来消息队列的发展",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_195",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 392,
+      "query": "面向聚类分析的文本分类平台",
+      "query_type": "exact",
+      "relevant_source": "doc_196",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 393,
+      "query": "类分析系统部署过程中，我们遇到了文本",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_196",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 394,
+      "query": "面向API网关的负载均衡平台",
+      "query_type": "exact",
+      "relevant_source": "doc_197",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 395,
+      "query": "程中，我们遇到了负载均衡相关的性",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_197",
+      "baseline_rank": 2,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 396,
+      "query": "深入理解对抗生成网络：",
+      "query_type": "exact",
+      "relevant_source": "doc_198",
+      "baseline_rank": 1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 397,
+      "query": "系统、物联网等关键技术。在此",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_198",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 398,
+      "query": "边缘计算在数据挖掘中的应用",
+      "query_type": "exact",
+      "relevant_source": "doc_199",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 399,
+      "query": "存储瓶颈问题，本文提出了一种结",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_199",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 400,
+      "query": "基于设计模式的实时情",
+      "query_type": "exact",
+      "relevant_source": "doc_200",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 401,
+      "query": "统架构角度出发，设计了一套基于设计",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_200",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 402,
+      "query": "下一代文本分类：融合深度学",
+      "query_type": "exact",
+      "relevant_source": "doc_201",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 403,
+      "query": "方案。经过大量实验验",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_201",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 404,
+      "query": "分布式系统算法优",
+      "query_type": "exact",
+      "relevant_source": "doc_202",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 405,
+      "query": "了分布式系统的核心原理和关键技术。通过分",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_202",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 406,
+      "query": "数据结构技术原理与容器技术实践",
+      "query_type": "exact",
+      "relevant_source": "doc_203",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 407,
+      "query": "文详细介绍了数据结构的",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_203",
+      "baseline_rank": 7,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 408,
+      "query": "基于情感分析的实时搜",
+      "query_type": "exact",
+      "relevant_source": "doc_204",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 409,
+      "query": "引擎的最新研究成果，提出了一种创新",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_204",
+      "baseline_rank": -1,
+      "hybrid_rank": 4
+    },
+    {
+      "qid": 410,
+      "query": "大规模负载均衡系",
+      "query_type": "exact",
+      "relevant_source": "doc_205",
+      "baseline_rank": 2,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 411,
+      "query": "性能瓶颈。通过引入机器翻译",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_205",
+      "baseline_rank": 6,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 412,
+      "query": "深入理解机器翻译：从",
+      "query_type": "exact",
+      "relevant_source": "doc_206",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 413,
+      "query": "优化方案。经过大量实验验证，",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_206",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 414,
+      "query": "基于数据挖掘的设计模",
+      "query_type": "exact",
+      "relevant_source": "doc_207",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 415,
+      "query": "表明，该方法在数据库指标上取",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_207",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 416,
+      "query": "联邦学习在网络安全",
+      "query_type": "exact",
+      "relevant_source": "doc_208",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 417,
+      "query": "一种创新的解决方案。实验结果表",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_208",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 418,
+      "query": "大规模缓存系统系统架构设",
+      "query_type": "exact",
+      "relevant_source": "doc_209",
+      "baseline_rank": 2,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 419,
+      "query": "系统系统部署过程中，我们遇到了",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_209",
+      "baseline_rank": 3,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 420,
+      "query": "下一代容器技术：融合",
+      "query_type": "exact",
+      "relevant_source": "doc_210",
+      "baseline_rank": 2,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 421,
+      "query": "器技术技术的快速发展，推荐系统领",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_210",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 422,
+      "query": "基于网络安全的实时区块链",
+      "query_type": "exact",
+      "relevant_source": "doc_211",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 423,
+      "query": "预测了未来三维重建的发展方",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_211",
+      "baseline_rank": -1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 424,
+      "query": "回归分析技术原理与推荐系统实",
+      "query_type": "exact",
+      "relevant_source": "doc_212",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 425,
+      "query": "出发，设计了一套基于回",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_212",
+      "baseline_rank": -1,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 426,
+      "query": "对抗生成网络最新进",
+      "query_type": "exact",
+      "relevant_source": "doc_213",
+      "baseline_rank": 3,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 427,
+      "query": "本文详细介绍了对抗生成网络",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_213",
+      "baseline_rank": -1,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 428,
+      "query": "对抗生成网络技术原理与图数据库",
+      "query_type": "exact",
+      "relevant_source": "doc_214",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 429,
+      "query": "介绍了对抗生成网络的核心",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_214",
+      "baseline_rank": 3,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 430,
+      "query": "基于联邦学习的实时AP",
+      "query_type": "exact",
+      "relevant_source": "doc_215",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 431,
+      "query": "合API网关技术的优化方案。经过大量实验",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_215",
+      "baseline_rank": 3,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 432,
+      "query": "对抗生成网络算法优化：消息队列",
+      "query_type": "exact",
+      "relevant_source": "doc_216",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 433,
+      "query": "本文详细介绍了对抗生",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_216",
+      "baseline_rank": -1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 434,
+      "query": "下一代推荐系统：融合边缘计",
+      "query_type": "exact",
+      "relevant_source": "doc_217",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 435,
+      "query": "统领域面临的计算效率和存储瓶颈问",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_217",
+      "baseline_rank": 2,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 436,
+      "query": "基于降维算法的实时图",
+      "query_type": "exact",
+      "relevant_source": "doc_218",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 437,
+      "query": "一种结合图数据库技术的",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_218",
+      "baseline_rank": -1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 438,
+      "query": "人工智能在目标检测中的",
+      "query_type": "exact",
+      "relevant_source": "doc_219",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 439,
+      "query": "分析了目标检测、回归分",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_219",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 440,
+      "query": "深入理解设计模式：",
+      "query_type": "exact",
+      "relevant_source": "doc_220",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 441,
+      "query": "计模式领域近年来的重要研究进展",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_220",
+      "baseline_rank": 2,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 442,
+      "query": "下一代API网关：融合数据",
+      "query_type": "exact",
+      "relevant_source": "doc_221",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 443,
+      "query": "存储瓶颈问题，本文提出了",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_221",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 444,
+      "query": "回归分析技术原理与性能优化实",
+      "query_type": "exact",
+      "relevant_source": "doc_222",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 445,
+      "query": "案。实验结果表明，该方法",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_222",
+      "baseline_rank": -1,
+      "hybrid_rank": 6
+    },
+    {
+      "qid": 446,
+      "query": "时间序列算法优化：异",
+      "query_type": "exact",
+      "relevant_source": "doc_223",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 447,
+      "query": "介绍了时间序列的核心原理和关键技术。",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_223",
+      "baseline_rank": 4,
+      "hybrid_rank": 3
+    },
+    {
+      "qid": 448,
+      "query": "基于人脸识别的服",
+      "query_type": "exact",
+      "relevant_source": "doc_224",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 449,
+      "query": "术的优化方案。经过大量实验验证，该方案在",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_224",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 450,
+      "query": "深入理解缓存系统：从",
+      "query_type": "exact",
+      "relevant_source": "doc_225",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 451,
+      "query": "和挑战。本文从系统架构角度出发",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_225",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 452,
+      "query": "机器翻译最新进展与服务",
+      "query_type": "exact",
+      "relevant_source": "doc_226",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 453,
+      "query": "度出发，设计了一套基于机",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_226",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 454,
+      "query": "大规模搜索引擎系统架构设计与",
+      "query_type": "exact",
+      "relevant_source": "doc_227",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 455,
+      "query": "出了一种创新的解决方案。实验结果表明，该",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_227",
+      "baseline_rank": 9,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 456,
+      "query": "深入理解对抗生成网络：从计算机",
+      "query_type": "exact",
+      "relevant_source": "doc_228",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 457,
+      "query": "过程中，我们遇到了计算",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_228",
+      "baseline_rank": -1,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 458,
+      "query": "图像分割在服务网格",
+      "query_type": "exact",
+      "relevant_source": "doc_229",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 459,
+      "query": "领域面临的计算效率和存",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_229",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 460,
+      "query": "机器翻译最新进展与云计算发展",
+      "query_type": "exact",
+      "relevant_source": "doc_230",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 461,
+      "query": "重点分析了云计算、对抗生成网络等",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_230",
+      "baseline_rank": -1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 462,
+      "query": "深入理解边缘计算：从时间序",
+      "query_type": "exact",
+      "relevant_source": "doc_231",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 463,
+      "query": "系统吞吐量提升了四倍以上",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_231",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 464,
+      "query": "下一代机器学习：融合三",
+      "query_type": "exact",
+      "relevant_source": "doc_232",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 465,
+      "query": "建领域也迎来了新的机遇和挑战。本文从系统",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_232",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 466,
+      "query": "异常检测最新进展与",
+      "query_type": "exact",
+      "relevant_source": "doc_233",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 467,
+      "query": "我们遇到了计算机视觉相关的性能瓶颈。",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_233",
+      "baseline_rank": 7,
+      "hybrid_rank": 4
+    },
+    {
+      "qid": 468,
+      "query": "云计算最新进展与微服务架",
+      "query_type": "exact",
+      "relevant_source": "doc_234",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 469,
+      "query": "，系统吞吐量提升了四",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_234",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 470,
+      "query": "云计算技术原理与分布式系",
+      "query_type": "exact",
+      "relevant_source": "doc_235",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 471,
+      "query": "，我们遇到了分布式系统相关的性能瓶颈",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_235",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 472,
+      "query": "面向对抗生成网络的服务",
+      "query_type": "exact",
+      "relevant_source": "doc_236",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 473,
+      "query": "对性优化，系统吞吐量提升了四倍以",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_236",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 474,
+      "query": "基于人脸识别的实时设计模",
+      "query_type": "exact",
+      "relevant_source": "doc_237",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 475,
+      "query": "一种创新的解决方案。",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_237",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 476,
+      "query": "文本分类在三维重建中的",
+      "query_type": "exact",
+      "relevant_source": "doc_238",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 477,
+      "query": "种结合三维重建技术的优化方案。经",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_238",
+      "baseline_rank": 2,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 478,
+      "query": "大规模大数据系统架",
+      "query_type": "exact",
+      "relevant_source": "doc_239",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 479,
+      "query": "和关键技术。通过分析联邦学习的最新",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_239",
+      "baseline_rank": 4,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 480,
+      "query": "大规模回归分析系统",
+      "query_type": "exact",
+      "relevant_source": "doc_240",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 481,
+      "query": "研究成果，提出了一种",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_240",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 482,
+      "query": "神经网络算法优化：知识图谱",
+      "query_type": "exact",
+      "relevant_source": "doc_241",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 483,
+      "query": "术。通过分析知识图谱的最",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_241",
+      "baseline_rank": -1,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 484,
+      "query": "下一代聚类分析：融合大数据的",
+      "query_type": "exact",
+      "relevant_source": "doc_242",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 485,
+      "query": "明，该方法在异常检测指标上取得了显著提",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_242",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 486,
+      "query": "下一代自然语言处理：融合负载",
+      "query_type": "exact",
+      "relevant_source": "doc_243",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 487,
+      "query": "迎来了新的机遇和挑战。本文从系统架构",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_243",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 488,
+      "query": "下一代计算机视觉：融",
+      "query_type": "exact",
+      "relevant_source": "doc_244",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 489,
+      "query": "一套基于计算机视觉的性能优化框架，",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_244",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 490,
+      "query": "下一代数据挖掘：融",
+      "query_type": "exact",
+      "relevant_source": "doc_245",
+      "baseline_rank": 1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 491,
+      "query": "文详细介绍了数据挖掘的核心原理和关键技",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_245",
+      "baseline_rank": 5,
+      "hybrid_rank": 5
+    },
+    {
+      "qid": 492,
+      "query": "知识图谱最新进展与",
+      "query_type": "exact",
+      "relevant_source": "doc_246",
+      "baseline_rank": 2,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 493,
+      "query": "随着知识图谱技术的快速发展，",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_246",
+      "baseline_rank": 1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 494,
+      "query": "云计算在聚类分析中的应",
+      "query_type": "exact",
+      "relevant_source": "doc_247",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 495,
+      "query": "当前云计算领域面临的",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_247",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 496,
+      "query": "推荐系统技术原理与人脸识别实",
+      "query_type": "exact",
+      "relevant_source": "doc_248",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 497,
+      "query": "结合人脸识别技术的优化方案。",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_248",
+      "baseline_rank": 3,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 498,
+      "query": "面向自然语言处理的微服务架构",
+      "query_type": "exact",
+      "relevant_source": "doc_249",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 499,
+      "query": "析微服务架构的最新研究成果，提出",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_249",
+      "baseline_rank": 4,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 500,
+      "query": "大规模设计模式系统",
+      "query_type": "exact",
+      "relevant_source": "doc_250",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 501,
+      "query": "技术。在此基础上，预测了未来联邦学习",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_250",
+      "baseline_rank": 6,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 502,
+      "query": "深入理解人脸识别：从",
+      "query_type": "exact",
+      "relevant_source": "doc_251",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 503,
+      "query": "研究进展，重点分析了分",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_251",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 504,
+      "query": "深度学习最新进展与数据结",
+      "query_type": "exact",
+      "relevant_source": "doc_252",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 505,
+      "query": "学习系统部署过程中，我们遇到了数据结",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_252",
+      "baseline_rank": 2,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 506,
+      "query": "基于异常检测的实时机器",
+      "query_type": "exact",
+      "relevant_source": "doc_253",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 507,
+      "query": "，系统吞吐量提升了四倍以",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_253",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 508,
+      "query": "回归分析算法优化：分布式系",
+      "query_type": "exact",
+      "relevant_source": "doc_254",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 509,
+      "query": "析分布式系统的最新研究成果，提出了一种",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_254",
+      "baseline_rank": 3,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 510,
+      "query": "基于数据库的缓存系统系统设",
+      "query_type": "exact",
+      "relevant_source": "doc_255",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 511,
+      "query": "基于数据库的缓存系统框架，有效解决了传统",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_255",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 512,
+      "query": "面向知识图谱的三维",
+      "query_type": "exact",
+      "relevant_source": "doc_256",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 513,
+      "query": "储瓶颈问题，本文提出了一种结合三",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_256",
+      "baseline_rank": -1,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 514,
+      "query": "边缘计算算法优化：姿态",
+      "query_type": "exact",
+      "relevant_source": "doc_257",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 515,
+      "query": "述了边缘计算领域近年来的重",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_257",
+      "baseline_rank": 3,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 516,
+      "query": "基于姿态估计的迁移",
+      "query_type": "exact",
+      "relevant_source": "doc_258",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 517,
+      "query": "迁移学习、分布式系统等",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_258",
+      "baseline_rank": 5,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 518,
+      "query": "深入理解数据结构：从大数据到实",
+      "query_type": "exact",
+      "relevant_source": "doc_259",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 519,
+      "query": "策略进行针对性优化，系统吞吐量提升了四",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_259",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 520,
+      "query": "基于负载均衡的对",
+      "query_type": "exact",
+      "relevant_source": "doc_260",
+      "baseline_rank": 2,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 521,
+      "query": "储瓶颈问题，本文提出了一种结合对抗生成网",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_260",
+      "baseline_rank": 2,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 522,
+      "query": "大规模迁移学习系统架",
+      "query_type": "exact",
+      "relevant_source": "doc_261",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 523,
+      "query": "术的快速发展，缓存系",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_261",
+      "baseline_rank": -1,
+      "hybrid_rank": 3
+    },
+    {
+      "qid": 524,
+      "query": "基于回归分析的情感分",
+      "query_type": "exact",
+      "relevant_source": "doc_262",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 525,
+      "query": "新的解决方案。实验结",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_262",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 526,
+      "query": "大规模迁移学习系统架",
+      "query_type": "exact",
+      "relevant_source": "doc_263",
+      "baseline_rank": 1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 527,
+      "query": "战。本文从系统架构角度出发，设",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_263",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 528,
+      "query": "面向图像分割的自然语言处",
+      "query_type": "exact",
+      "relevant_source": "doc_264",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 529,
+      "query": "面临的计算效率和存储瓶颈问题，",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_264",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 530,
+      "query": "基于聚类分析的实时云",
+      "query_type": "exact",
+      "relevant_source": "doc_265",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 531,
+      "query": "方案。实验结果表明，该方法在",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_265",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 532,
+      "query": "基于图数据库的姿态",
+      "query_type": "exact",
+      "relevant_source": "doc_266",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 533,
+      "query": "测了未来API网关的",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_266",
+      "baseline_rank": -1,
+      "hybrid_rank": 3
+    },
+    {
+      "qid": 534,
+      "query": "命名实体识别算法优化：大数",
+      "query_type": "exact",
+      "relevant_source": "doc_267",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 535,
+      "query": "于命名实体识别的大数据框架，有效",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_267",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 536,
+      "query": "基于分布式系统的API网",
+      "query_type": "exact",
+      "relevant_source": "doc_268",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 537,
+      "query": "结合API网关技术的优",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_268",
+      "baseline_rank": 7,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 538,
+      "query": "下一代目标检测：融合数据",
+      "query_type": "exact",
+      "relevant_source": "doc_269",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 539,
+      "query": "础上，预测了未来图像分割的发展方向和潜",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_269",
+      "baseline_rank": 4,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 540,
+      "query": "下一代回归分析：融",
+      "query_type": "exact",
+      "relevant_source": "doc_270",
+      "baseline_rank": 1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 541,
+      "query": "种结合异常检测技术的优化方案。经过",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_270",
+      "baseline_rank": 3,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 542,
+      "query": "机器学习最新进展与区块链发",
+      "query_type": "exact",
+      "relevant_source": "doc_271",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 543,
+      "query": "前机器学习领域面临的计算效率和存储",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_271",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 544,
+      "query": "下一代API网关：融",
+      "query_type": "exact",
+      "relevant_source": "doc_272",
+      "baseline_rank": 2,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 545,
+      "query": "智能相关的性能瓶颈。通过",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_272",
+      "baseline_rank": 2,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 546,
+      "query": "计算机视觉在容器技术中的",
+      "query_type": "exact",
+      "relevant_source": "doc_273",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 547,
+      "query": "方案。实验结果表明，该",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_273",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 548,
+      "query": "基于设计模式的实时",
+      "query_type": "exact",
+      "relevant_source": "doc_274",
+      "baseline_rank": 8,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 549,
+      "query": "，我们遇到了关系抽取相关的性能瓶颈。",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_274",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 550,
+      "query": "大规模负载均衡系",
+      "query_type": "exact",
+      "relevant_source": "doc_275",
+      "baseline_rank": 1,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 551,
+      "query": "综述了负载均衡领域近",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_275",
+      "baseline_rank": 5,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 552,
+      "query": "姿态估计技术原理与",
+      "query_type": "exact",
+      "relevant_source": "doc_276",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 553,
+      "query": "综述了姿态估计领域近年来的重要研究",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_276",
+      "baseline_rank": 1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 554,
+      "query": "自然语言处理算法优化：回归",
+      "query_type": "exact",
+      "relevant_source": "doc_277",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 555,
+      "query": "分析相关的性能瓶颈。通过",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_277",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 556,
+      "query": "文本分类最新进展与姿",
+      "query_type": "exact",
+      "relevant_source": "doc_278",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 557,
+      "query": "类的姿态估计框架，有",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_278",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 558,
+      "query": "基于性能优化的实时命名实体识",
+      "query_type": "exact",
+      "relevant_source": "doc_279",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 559,
+      "query": "原理和关键技术。通过分析命名实",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_279",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 560,
+      "query": "图数据库算法优化：回归",
+      "query_type": "exact",
+      "relevant_source": "doc_280",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 561,
+      "query": "了回归分析、回归分析等关键技术",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_280",
+      "baseline_rank": -1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 562,
+      "query": "基于聚类分析的实时消息队",
+      "query_type": "exact",
+      "relevant_source": "doc_281",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 563,
+      "query": "了聚类分析领域近年来的重要研究进展，重",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_281",
+      "baseline_rank": 3,
+      "hybrid_rank": 3
+    },
+    {
+      "qid": 564,
+      "query": "深入理解自然语言处理：从人",
+      "query_type": "exact",
+      "relevant_source": "doc_282",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 565,
+      "query": "理技术的快速发展，人工智能领域也迎来",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_282",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 566,
+      "query": "基于性能优化的搜",
+      "query_type": "exact",
+      "relevant_source": "doc_283",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 567,
+      "query": "的核心原理和关键技术。通过",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_283",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 568,
+      "query": "文本分类技术原理",
+      "query_type": "exact",
+      "relevant_source": "doc_284",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 569,
+      "query": "关的性能瓶颈。通过引入",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_284",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 570,
+      "query": "面向机器翻译的排序算法平台构建",
+      "query_type": "exact",
+      "relevant_source": "doc_285",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 571,
+      "query": "存储瓶颈问题，本文提出了一种",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_285",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 572,
+      "query": "基于计算机视觉的实时神经网",
+      "query_type": "exact",
+      "relevant_source": "doc_286",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 573,
+      "query": "绍了计算机视觉的核心原理和关键技术。",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_286",
+      "baseline_rank": 1,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 574,
+      "query": "基于对抗生成网络的实时计算机视",
+      "query_type": "exact",
+      "relevant_source": "doc_287",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 575,
+      "query": "本文综述了对抗生成网络领域近年",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_287",
+      "baseline_rank": 6,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 576,
+      "query": "神经网络最新进展与排序",
+      "query_type": "exact",
+      "relevant_source": "doc_288",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 577,
+      "query": "键技术。通过分析排序算法的最新研究成果",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_288",
+      "baseline_rank": 1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 578,
+      "query": "下一代神经网络：融合机器",
+      "query_type": "exact",
+      "relevant_source": "doc_289",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 579,
+      "query": "优化，系统吞吐量提升了四倍以上，延迟降",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_289",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 580,
+      "query": "基于降维算法的服务网格",
+      "query_type": "exact",
+      "relevant_source": "doc_290",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 581,
+      "query": "挑战。本文从系统架构角度出发，",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_290",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 582,
+      "query": "基于迁移学习的人脸识别系统设计",
+      "query_type": "exact",
+      "relevant_source": "doc_291",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 583,
+      "query": "，系统吞吐量提升了四倍以上",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_291",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 584,
+      "query": "大规模消息队列系统架构",
+      "query_type": "exact",
+      "relevant_source": "doc_292",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 585,
+      "query": "快速发展，设计模式领",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_292",
+      "baseline_rank": -1,
+      "hybrid_rank": 5
+    },
+    {
+      "qid": 586,
+      "query": "面向计算机视觉的命名实体识别",
+      "query_type": "exact",
+      "relevant_source": "doc_293",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 587,
+      "query": "文综述了计算机视觉领域近年",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_293",
+      "baseline_rank": 2,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 588,
+      "query": "物联网技术原理与自动化测试",
+      "query_type": "exact",
+      "relevant_source": "doc_294",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 589,
+      "query": "度出发，设计了一套基",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_294",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 590,
+      "query": "分布式系统技术原理与容器技",
+      "query_type": "exact",
+      "relevant_source": "doc_295",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 591,
+      "query": "本文综述了分布式系统领域近年来的重要研究",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_295",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 592,
+      "query": "基于容器技术的性能优化系统设",
+      "query_type": "exact",
+      "relevant_source": "doc_296",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 593,
+      "query": "术的性能优化框架，有效解决了",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_296",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 594,
+      "query": "下一代自动化测试：",
+      "query_type": "exact",
+      "relevant_source": "doc_297",
+      "baseline_rank": 1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 595,
+      "query": "年来的重要研究进展，重点分析了时间序",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_297",
+      "baseline_rank": 1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 596,
+      "query": "下一代联邦学习：融合回",
+      "query_type": "exact",
+      "relevant_source": "doc_298",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 597,
+      "query": "文提出了一种结合回归分析技术的优化",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_298",
+      "baseline_rank": 2,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 598,
+      "query": "基于时间序列的缓",
+      "query_type": "exact",
+      "relevant_source": "doc_299",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 599,
+      "query": "部署过程中，我们遇到了缓存系",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_299",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 600,
+      "query": "下一代联邦学习：融",
+      "query_type": "exact",
+      "relevant_source": "doc_300",
+      "baseline_rank": 1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 601,
+      "query": "详细介绍了联邦学习的核心原",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_300",
+      "baseline_rank": 1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 602,
+      "query": "API网关算法优化：命名实体",
+      "query_type": "exact",
+      "relevant_source": "doc_301",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 603,
+      "query": "策略进行针对性优化，系统吞吐量",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_301",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 604,
+      "query": "基于深度学习的自然语言处理系统",
+      "query_type": "exact",
+      "relevant_source": "doc_302",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 605,
+      "query": "的解决方案。实验结果表",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_302",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 606,
+      "query": "三维重建算法优化：",
+      "query_type": "exact",
+      "relevant_source": "doc_303",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 607,
+      "query": "命名实体识别等关键技术。",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_303",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 608,
+      "query": "下一代图像分割：融合设计模式",
+      "query_type": "exact",
+      "relevant_source": "doc_304",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 609,
+      "query": "分割技术的快速发展，设计模式领域也迎来",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_304",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 610,
+      "query": "缓存系统技术原理",
+      "query_type": "exact",
+      "relevant_source": "doc_305",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 611,
+      "query": "态估计的最新研究成果，提出了一种创新的解",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_305",
+      "baseline_rank": 5,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 612,
+      "query": "基于联邦学习的分布式",
+      "query_type": "exact",
+      "relevant_source": "doc_306",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 613,
+      "query": "重要研究进展，重点分析了分布",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_306",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 614,
+      "query": "异常检测算法优化：区",
+      "query_type": "exact",
+      "relevant_source": "doc_307",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 615,
+      "query": "区块链相关的性能瓶颈。通过引入深",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_307",
+      "baseline_rank": 4,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 616,
+      "query": "大规模关系抽取系统架构设计",
+      "query_type": "exact",
+      "relevant_source": "doc_308",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 617,
+      "query": "瓶颈问题，本文提出了一种结合关系抽",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_308",
+      "baseline_rank": 5,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 618,
+      "query": "大规模图数据库系统架构设",
+      "query_type": "exact",
+      "relevant_source": "doc_309",
+      "baseline_rank": 0,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 619,
+      "query": "的重要研究进展，重点分",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_309",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 620,
+      "query": "基于自然语言处理的时间",
+      "query_type": "exact",
+      "relevant_source": "doc_310",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 621,
+      "query": "处理领域面临的计算效率和存储瓶颈问题，",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_310",
+      "baseline_rank": -1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 622,
+      "query": "分布式系统最新进展",
+      "query_type": "exact",
+      "relevant_source": "doc_311",
+      "baseline_rank": 1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 623,
+      "query": "领域面临的计算效率和存",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_311",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 624,
+      "query": "大规模数据结构系统架",
+      "query_type": "exact",
+      "relevant_source": "doc_312",
+      "baseline_rank": 2,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 625,
+      "query": "分析的最新研究成果，提出了一种创新",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_312",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 626,
+      "query": "人脸识别最新进展与聚类分析",
+      "query_type": "exact",
+      "relevant_source": "doc_313",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 627,
+      "query": "的性能瓶颈。通过引入容",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_313",
+      "baseline_rank": 7,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 628,
+      "query": "微服务架构最新进展与姿态估",
+      "query_type": "exact",
+      "relevant_source": "doc_314",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 629,
+      "query": "预测了未来数据库的发展方向",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_314",
+      "baseline_rank": -1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 630,
+      "query": "面向边缘计算的异常检测平台构建",
+      "query_type": "exact",
+      "relevant_source": "doc_315",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 631,
+      "query": "技术。通过分析异常检测的最新研究成",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_315",
+      "baseline_rank": 8,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 632,
+      "query": "大规模异常检测系统架构设",
+      "query_type": "exact",
+      "relevant_source": "doc_316",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 633,
+      "query": "果表明，该方法在迁移学",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_316",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 634,
+      "query": "大规模服务网格系统",
+      "query_type": "exact",
+      "relevant_source": "doc_317",
+      "baseline_rank": 2,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 635,
+      "query": "署过程中，我们遇到了消息队列相关的性能瓶",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_317",
+      "baseline_rank": 3,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 636,
+      "query": "基于物联网的数据挖掘",
+      "query_type": "exact",
+      "relevant_source": "doc_318",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 637,
+      "query": "经过大量实验验证，该方案在微服务架构场",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_318",
+      "baseline_rank": -1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 638,
+      "query": "面向分布式系统的",
+      "query_type": "exact",
+      "relevant_source": "doc_319",
+      "baseline_rank": 4,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 639,
+      "query": "核心原理和关键技术。通过分析命",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_319",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 640,
+      "query": "聚类分析技术原理与负",
+      "query_type": "exact",
+      "relevant_source": "doc_320",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 641,
+      "query": "聚类分析领域近年来的重要研",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_320",
+      "baseline_rank": 2,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 642,
+      "query": "下一代边缘计算：融合容器技",
+      "query_type": "exact",
+      "relevant_source": "doc_321",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 643,
+      "query": "的机遇和挑战。本文从系统架构角度出发",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_321",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 644,
+      "query": "大规模数据结构系",
+      "query_type": "exact",
+      "relevant_source": "doc_322",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 645,
+      "query": "，设计了一套基于数据结构的联",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_322",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 646,
+      "query": "联邦学习算法优化：三维重",
+      "query_type": "exact",
+      "relevant_source": "doc_323",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 647,
+      "query": "邦学习的三维重建框架，有",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_323",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 648,
+      "query": "深入理解机器翻译",
+      "query_type": "exact",
+      "relevant_source": "doc_324",
+      "baseline_rank": 1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 649,
+      "query": "本文提出了一种结合推荐系统技术的优",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_324",
+      "baseline_rank": 6,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 650,
+      "query": "回归分析最新进展与目标",
+      "query_type": "exact",
+      "relevant_source": "doc_325",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 651,
+      "query": "析系统部署过程中，我们遇到了目标检",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_325",
+      "baseline_rank": 3,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 652,
+      "query": "深入理解命名实体识",
+      "query_type": "exact",
+      "relevant_source": "doc_326",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 653,
+      "query": "测了未来网络安全的发展方",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_326",
+      "baseline_rank": -1,
+      "hybrid_rank": 5
+    },
+    {
+      "qid": 654,
+      "query": "微服务架构算法优化",
+      "query_type": "exact",
+      "relevant_source": "doc_327",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 655,
+      "query": "针对当前微服务架构领",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_327",
+      "baseline_rank": -1,
+      "hybrid_rank": 5
+    },
+    {
+      "qid": 656,
+      "query": "基于图像分割的分布式系",
+      "query_type": "exact",
+      "relevant_source": "doc_328",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 657,
+      "query": "领域面临的计算效率和存储瓶",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_328",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 658,
+      "query": "数据库算法优化：性能优化视角",
+      "query_type": "exact",
+      "relevant_source": "doc_329",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 659,
+      "query": "了性能优化、网络安全等关键技术",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_329",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 660,
+      "query": "容器技术算法优化：",
+      "query_type": "exact",
+      "relevant_source": "doc_330",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 661,
+      "query": "习技术的优化方案。经过大量实验验证，该",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_330",
+      "baseline_rank": 3,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 662,
+      "query": "面向机器学习的强化学习平",
+      "query_type": "exact",
+      "relevant_source": "doc_331",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 663,
+      "query": "验证，该方案在自然语言",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_331",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 664,
+      "query": "深入理解推荐系统",
+      "query_type": "exact",
+      "relevant_source": "doc_332",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 665,
+      "query": "介绍了推荐系统的核心原理和",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_332",
+      "baseline_rank": 0,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 666,
+      "query": "大规模缓存系统系统架构设计与优",
+      "query_type": "exact",
+      "relevant_source": "doc_333",
+      "baseline_rank": 2,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 667,
+      "query": "于缓存系统的分布式系统框",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_333",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 668,
+      "query": "微服务架构技术原理",
+      "query_type": "exact",
+      "relevant_source": "doc_334",
+      "baseline_rank": 6,
+      "hybrid_rank": 3
+    },
+    {
+      "qid": 669,
+      "query": "系统吞吐量提升了四倍以上，延迟",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_334",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 670,
+      "query": "联邦学习在三维重建",
+      "query_type": "exact",
+      "relevant_source": "doc_335",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 671,
+      "query": "当前联邦学习领域面临的计算效率和存",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_335",
+      "baseline_rank": 1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 672,
+      "query": "下一代大数据：融",
+      "query_type": "exact",
+      "relevant_source": "doc_336",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 673,
+      "query": "近年来的重要研究进展，重点分析了容器技",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_336",
+      "baseline_rank": 0,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 674,
+      "query": "深入理解迁移学习：从云计算到",
+      "query_type": "exact",
+      "relevant_source": "doc_337",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 675,
+      "query": "过大量实验验证，该方案在自动化测",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_337",
+      "baseline_rank": -1,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 676,
+      "query": "下一代云计算：融合自然语言处理",
+      "query_type": "exact",
+      "relevant_source": "doc_338",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 677,
+      "query": "实际云计算系统部署过程中，我们遇",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_338",
+      "baseline_rank": 3,
+      "hybrid_rank": 3
+    },
+    {
+      "qid": 678,
+      "query": "面向计算机视觉的云计算平台构",
+      "query_type": "exact",
+      "relevant_source": "doc_339",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 679,
+      "query": "觉的核心原理和关键技术。通过分",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_339",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 680,
+      "query": "时间序列技术原理与命名",
+      "query_type": "exact",
+      "relevant_source": "doc_340",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 681,
+      "query": "临的计算效率和存储瓶颈问题，",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_340",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 682,
+      "query": "深入理解迁移学习：从人工",
+      "query_type": "exact",
+      "relevant_source": "doc_341",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 683,
+      "query": "工智能、三维重建等关键技",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_341",
+      "baseline_rank": -1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 684,
+      "query": "基于强化学习的区",
+      "query_type": "exact",
+      "relevant_source": "doc_342",
+      "baseline_rank": 7,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 685,
+      "query": "术。在此基础上，预测了未来聚类分析的发",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_342",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 686,
+      "query": "面向服务网格的计算机视",
+      "query_type": "exact",
+      "relevant_source": "doc_343",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 687,
+      "query": "术。在此基础上，预测了未来机",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_343",
+      "baseline_rank": -1,
+      "hybrid_rank": 3
+    },
+    {
+      "qid": 688,
+      "query": "图像分割在机器学习中的应用与挑",
+      "query_type": "exact",
+      "relevant_source": "doc_344",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 689,
+      "query": "的性能瓶颈。通过引入边缘计算策略进行",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_344",
+      "baseline_rank": 3,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 690,
+      "query": "大规模服务网格系统架构设计与优",
+      "query_type": "exact",
+      "relevant_source": "doc_345",
+      "baseline_rank": 0,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 691,
+      "query": "细介绍了服务网格的核心",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_345",
+      "baseline_rank": 1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 692,
+      "query": "基于API网关的推荐系统",
+      "query_type": "exact",
+      "relevant_source": "doc_346",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 693,
+      "query": "点分析了推荐系统、数据结",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_346",
+      "baseline_rank": 3,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 694,
+      "query": "设计模式在性能优化中的应用与",
+      "query_type": "exact",
+      "relevant_source": "doc_347",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 695,
+      "query": "的计算效率和存储瓶颈问题，本文提出了一种",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_347",
+      "baseline_rank": 4,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 696,
+      "query": "机器翻译算法优化：负载",
+      "query_type": "exact",
+      "relevant_source": "doc_348",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 697,
+      "query": "策略进行针对性优化，系统吞吐量提升了",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_348",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 698,
+      "query": "时间序列算法优化：区块链视角",
+      "query_type": "exact",
+      "relevant_source": "doc_349",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 699,
+      "query": "文详细介绍了时间序列的核心原理和",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_349",
+      "baseline_rank": 3,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 700,
+      "query": "图数据库在物联网中的应用与",
+      "query_type": "exact",
+      "relevant_source": "doc_350",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 701,
+      "query": "一种结合物联网技术的优化方案。经过大",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_350",
+      "baseline_rank": 6,
+      "hybrid_rank": 3
+    },
+    {
+      "qid": 702,
+      "query": "消息队列算法优化：命名实体识别",
+      "query_type": "exact",
+      "relevant_source": "doc_351",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 703,
+      "query": "问题，本文提出了一种结合命名实体识别技",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_351",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 704,
+      "query": "深度学习最新进展与性能优化",
+      "query_type": "exact",
+      "relevant_source": "doc_352",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 705,
+      "query": "，本文提出了一种结合性能优化",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_352",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 706,
+      "query": "自动化测试最新进展与",
+      "query_type": "exact",
+      "relevant_source": "doc_353",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 707,
+      "query": "文详细介绍了自动化测试的核心原",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_353",
+      "baseline_rank": 1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 708,
+      "query": "服务网格算法优化：迁移",
+      "query_type": "exact",
+      "relevant_source": "doc_354",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 709,
+      "query": "实际服务网格系统部署过程中，",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_354",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 710,
+      "query": "负载均衡算法优化",
+      "query_type": "exact",
+      "relevant_source": "doc_355",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 711,
+      "query": "一种结合区块链技术的优化方案。经过大",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_355",
+      "baseline_rank": 3,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 712,
+      "query": "基于关系抽取的实时知识图谱",
+      "query_type": "exact",
+      "relevant_source": "doc_356",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 713,
+      "query": "案。实验结果表明，该方法在数据库指标上",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_356",
+      "baseline_rank": 2,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 714,
+      "query": "迁移学习最新进展与姿态",
+      "query_type": "exact",
+      "relevant_source": "doc_357",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 715,
+      "query": "面临的计算效率和存储瓶",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_357",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 716,
+      "query": "分布式系统最新进展与数",
+      "query_type": "exact",
+      "relevant_source": "doc_358",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 717,
+      "query": "化方案。经过大量实验验证，",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_358",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 718,
+      "query": "联邦学习技术原理与姿态估",
+      "query_type": "exact",
+      "relevant_source": "doc_359",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 719,
+      "query": "引入排序算法策略进行",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_359",
+      "baseline_rank": -1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 720,
+      "query": "大规模API网关系统架",
+      "query_type": "exact",
+      "relevant_source": "doc_360",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 721,
+      "query": "习等关键技术。在此基础上，预测了",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_360",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 722,
+      "query": "基于迁移学习的知识图谱系统",
+      "query_type": "exact",
+      "relevant_source": "doc_361",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 723,
+      "query": "过程中，我们遇到了知识图",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_361",
+      "baseline_rank": 6,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 724,
+      "query": "服务网格技术原理与命名",
+      "query_type": "exact",
+      "relevant_source": "doc_362",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 725,
+      "query": "成果，提出了一种创新的解决方案",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_362",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 726,
+      "query": "容器技术在姿态估计中的应用",
+      "query_type": "exact",
+      "relevant_source": "doc_363",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 727,
+      "query": "估计框架，有效解决了传统方法存在的问题",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_363",
+      "baseline_rank": -1,
+      "hybrid_rank": 3
+    },
+    {
+      "qid": 728,
+      "query": "大规模计算机视觉",
+      "query_type": "exact",
+      "relevant_source": "doc_364",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 729,
+      "query": "案。经过大量实验验证，该方案在",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_364",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 730,
+      "query": "边缘计算技术原理与目",
+      "query_type": "exact",
+      "relevant_source": "doc_365",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 731,
+      "query": "深度学习策略进行针对性优化",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_365",
+      "baseline_rank": -1,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 732,
+      "query": "基于服务网格的服务网格系统设计",
+      "query_type": "exact",
+      "relevant_source": "doc_366",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 733,
+      "query": "学习等关键技术。在此基础上，",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_366",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 734,
+      "query": "大规模微服务架构系统",
+      "query_type": "exact",
+      "relevant_source": "doc_367",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 735,
+      "query": "一种结合关系抽取技术",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_367",
+      "baseline_rank": -1,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 736,
+      "query": "推荐系统技术原理",
+      "query_type": "exact",
+      "relevant_source": "doc_368",
+      "baseline_rank": 5,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 737,
+      "query": "推荐系统系统部署过程中，我",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_368",
+      "baseline_rank": 3,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 738,
+      "query": "关系抽取最新进展与边缘",
+      "query_type": "exact",
+      "relevant_source": "doc_369",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 739,
+      "query": "对当前关系抽取领域面临的计算效率和存",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_369",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 740,
+      "query": "排序算法最新进展与联邦学习发展",
+      "query_type": "exact",
+      "relevant_source": "doc_370",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 741,
+      "query": "在实际排序算法系统部署过程中，",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_370",
+      "baseline_rank": 1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 742,
+      "query": "物联网算法优化：云计算视",
+      "query_type": "exact",
+      "relevant_source": "doc_371",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 743,
+      "query": "，云计算领域也迎来了新的",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_371",
+      "baseline_rank": -1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 744,
+      "query": "大规模排序算法系统架构设计",
+      "query_type": "exact",
+      "relevant_source": "doc_372",
+      "baseline_rank": 0,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 745,
+      "query": "。经过大量实验验证，该方",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_372",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 746,
+      "query": "排序算法最新进展与计算机视",
+      "query_type": "exact",
+      "relevant_source": "doc_373",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 747,
+      "query": "前排序算法领域面临的",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_373",
+      "baseline_rank": 0,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 748,
+      "query": "网络安全技术原理与排",
+      "query_type": "exact",
+      "relevant_source": "doc_374",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 749,
+      "query": "法技术的优化方案。经过大",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_374",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 750,
+      "query": "命名实体识别技术原",
+      "query_type": "exact",
+      "relevant_source": "doc_375",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 751,
+      "query": "名实体识别的数据挖掘框架，有效解决了",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_375",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 752,
+      "query": "下一代文本分类：融合机器学",
+      "query_type": "exact",
+      "relevant_source": "doc_376",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 753,
+      "query": "文本分类领域面临的计算效率和存",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_376",
+      "baseline_rank": 1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 754,
+      "query": "基于对抗生成网络的图像分割系",
+      "query_type": "exact",
+      "relevant_source": "doc_377",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 755,
+      "query": "成果，提出了一种创新的",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_377",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 756,
+      "query": "消息队列算法优化：神经网络",
+      "query_type": "exact",
+      "relevant_source": "doc_378",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 757,
+      "query": "进展，重点分析了神经网络、排序",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_378",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 758,
+      "query": "基于强化学习的自动化",
+      "query_type": "exact",
+      "relevant_source": "doc_379",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 759,
+      "query": "速发展，自动化测试领域也迎来了新",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_379",
+      "baseline_rank": -1,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 760,
+      "query": "缓存系统算法优化：异常检测视角",
+      "query_type": "exact",
+      "relevant_source": "doc_380",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 761,
+      "query": "术。在此基础上，预测了未来联邦",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_380",
+      "baseline_rank": 5,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 762,
+      "query": "下一代API网关：融",
+      "query_type": "exact",
+      "relevant_source": "doc_381",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 763,
+      "query": "，设计了一套基于API网关的微服务架",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_381",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 764,
+      "query": "自动化测试在微服务架构中的",
+      "query_type": "exact",
+      "relevant_source": "doc_382",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 765,
+      "query": "心原理和关键技术。通过分析微服务架构的最",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_382",
+      "baseline_rank": 4,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 766,
+      "query": "关系抽取技术原理与容",
+      "query_type": "exact",
+      "relevant_source": "doc_383",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 767,
+      "query": "，本文提出了一种结合容器技术",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_383",
+      "baseline_rank": 2,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 768,
+      "query": "排序算法最新进展与数据挖",
+      "query_type": "exact",
+      "relevant_source": "doc_384",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 769,
+      "query": "序算法的核心原理和关键技",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_384",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 770,
+      "query": "搜索引擎最新进展",
+      "query_type": "exact",
+      "relevant_source": "doc_385",
+      "baseline_rank": 6,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 771,
+      "query": "计了一套基于搜索引擎的物联网框架，有效",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_385",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 772,
+      "query": "基于时间序列的消息队列系统设",
+      "query_type": "exact",
+      "relevant_source": "doc_386",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 773,
+      "query": "测了未来机器翻译的发展方向和潜在应用场",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_386",
+      "baseline_rank": 9,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 774,
+      "query": "异常检测技术原理",
+      "query_type": "exact",
+      "relevant_source": "doc_387",
+      "baseline_rank": 3,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 775,
+      "query": "发展，网络安全领域也迎来了新的机遇和挑",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_387",
+      "baseline_rank": -1,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 776,
+      "query": "大规模聚类分析系统架构设计",
+      "query_type": "exact",
+      "relevant_source": "doc_388",
+      "baseline_rank": 0,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 777,
+      "query": "技术。在此基础上，预测了未",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_388",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 778,
+      "query": "下一代深度学习：融",
+      "query_type": "exact",
+      "relevant_source": "doc_389",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 779,
+      "query": "种结合机器学习技术的优化",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_389",
+      "baseline_rank": 2,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 780,
+      "query": "基于异常检测的实时大数据解",
+      "query_type": "exact",
+      "relevant_source": "doc_390",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 781,
+      "query": "，预测了未来目标检测的",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_390",
+      "baseline_rank": -1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 782,
+      "query": "面向时间序列的机器学习",
+      "query_type": "exact",
+      "relevant_source": "doc_391",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 783,
+      "query": "问题，本文提出了一种结合机器学",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_391",
+      "baseline_rank": 4,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 784,
+      "query": "基于异常检测的实时消",
+      "query_type": "exact",
+      "relevant_source": "doc_392",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 785,
+      "query": "的优化方案。经过大量实",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_392",
+      "baseline_rank": 4,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 786,
+      "query": "对抗生成网络技术原理与计算",
+      "query_type": "exact",
+      "relevant_source": "doc_393",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 787,
+      "query": "关的性能瓶颈。通过引",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_393",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 788,
+      "query": "大规模强化学习系统架构设",
+      "query_type": "exact",
+      "relevant_source": "doc_394",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 789,
+      "query": "来的重要研究进展，重点分析",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_394",
+      "baseline_rank": 6,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 790,
+      "query": "大规模容器技术系统",
+      "query_type": "exact",
+      "relevant_source": "doc_395",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 791,
+      "query": "系统相关的性能瓶颈。通过引入",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_395",
+      "baseline_rank": -1,
+      "hybrid_rank": 3
+    },
+    {
+      "qid": 792,
+      "query": "面向微服务架构的性",
+      "query_type": "exact",
+      "relevant_source": "doc_396",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 793,
+      "query": "的解决方案。实验结果",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_396",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 794,
+      "query": "缓存系统最新进展",
+      "query_type": "exact",
+      "relevant_source": "doc_397",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 795,
+      "query": "相关的性能瓶颈。通过引入对抗生成网",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_397",
+      "baseline_rank": 9,
+      "hybrid_rank": 5
+    },
+    {
+      "qid": 796,
+      "query": "推荐系统最新进展与容器技术发",
+      "query_type": "exact",
+      "relevant_source": "doc_398",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 797,
+      "query": "署过程中，我们遇到了容器技术相关",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_398",
+      "baseline_rank": 6,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 798,
+      "query": "大规模三维重建系统架构设计与优",
+      "query_type": "exact",
+      "relevant_source": "doc_399",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 799,
+      "query": "分析了强化学习、推荐系统等关键",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_399",
+      "baseline_rank": -1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 800,
+      "query": "数据结构技术原理与缓存系统实",
+      "query_type": "exact",
+      "relevant_source": "doc_400",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 801,
+      "query": "构系统部署过程中，我们遇到了缓存系",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_400",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 802,
+      "query": "命名实体识别算法优化：",
+      "query_type": "exact",
+      "relevant_source": "doc_401",
+      "baseline_rank": 0,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 803,
+      "query": "体识别的核心原理和关键技术。通过分",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_401",
+      "baseline_rank": 7,
+      "hybrid_rank": 3
+    },
+    {
+      "qid": 804,
+      "query": "深入理解数据库：从",
+      "query_type": "exact",
+      "relevant_source": "doc_402",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 805,
+      "query": "据库的神经网络框架，",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_402",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 806,
+      "query": "人脸识别最新进展与API",
+      "query_type": "exact",
+      "relevant_source": "doc_403",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 807,
+      "query": "实际人脸识别系统部署过程中，我",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_403",
+      "baseline_rank": 5,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 808,
+      "query": "姿态估计最新进展与异常检",
+      "query_type": "exact",
+      "relevant_source": "doc_404",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 809,
+      "query": "态估计领域近年来的重要",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_404",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 810,
+      "query": "人工智能最新进展与分布式系",
+      "query_type": "exact",
+      "relevant_source": "doc_405",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 811,
+      "query": "面临的计算效率和存储瓶颈问题，本",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_405",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 812,
+      "query": "基于性能优化的实时神",
+      "query_type": "exact",
+      "relevant_source": "doc_406",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 813,
+      "query": "解决方案。实验结果表明",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_406",
+      "baseline_rank": 5,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 814,
+      "query": "面向目标检测的图像",
+      "query_type": "exact",
+      "relevant_source": "doc_407",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 815,
+      "query": "颈问题，本文提出了一种结合图像分割技术",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_407",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 816,
+      "query": "面向计算机视觉的边缘计算平台构",
+      "query_type": "exact",
+      "relevant_source": "doc_408",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 817,
+      "query": "案。经过大量实验验证",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_408",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 818,
+      "query": "三维重建技术原理与回归分析实",
+      "query_type": "exact",
+      "relevant_source": "doc_409",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 819,
+      "query": "一种创新的解决方案。实验",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_409",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 820,
+      "query": "大规模神经网络系统架构设计与",
+      "query_type": "exact",
+      "relevant_source": "doc_410",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 821,
+      "query": "速发展，服务网格领域",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_410",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 822,
+      "query": "面向物联网的姿态",
+      "query_type": "exact",
+      "relevant_source": "doc_411",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 823,
+      "query": "通过分析姿态估计的最新研究",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_411",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 824,
+      "query": "大规模深度学习系统架构",
+      "query_type": "exact",
+      "relevant_source": "doc_412",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 825,
+      "query": "的性能瓶颈。通过引入微服务架构策略进",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_412",
+      "baseline_rank": 6,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 826,
+      "query": "面向关系抽取的对抗生成网",
+      "query_type": "exact",
+      "relevant_source": "doc_413",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 827,
+      "query": "度出发，设计了一套基于关系抽",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_413",
+      "baseline_rank": -1,
+      "hybrid_rank": 3
+    },
+    {
+      "qid": 828,
+      "query": "基于缓存系统的实时三维重",
+      "query_type": "exact",
+      "relevant_source": "doc_414",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 829,
+      "query": "重要研究进展，重点分析",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_414",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 830,
+      "query": "面向设计模式的消",
+      "query_type": "exact",
+      "relevant_source": "doc_415",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 831,
+      "query": "析了消息队列、人脸识别等关键技术。在此",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_415",
+      "baseline_rank": 4,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 832,
+      "query": "机器翻译最新进展与文本分类发展",
+      "query_type": "exact",
+      "relevant_source": "doc_416",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 833,
+      "query": "部署过程中，我们遇到",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_416",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 834,
+      "query": "基于机器学习的服务网格系统",
+      "query_type": "exact",
+      "relevant_source": "doc_417",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 835,
+      "query": "在实际机器学习系统部署过程中，我",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_417",
+      "baseline_rank": 9,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 836,
+      "query": "人脸识别在消息队列",
+      "query_type": "exact",
+      "relevant_source": "doc_418",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 837,
+      "query": "究进展，重点分析了消息队列、数据结构等关",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_418",
+      "baseline_rank": -1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 838,
+      "query": "下一代情感分析：融合搜索引擎的",
+      "query_type": "exact",
+      "relevant_source": "doc_419",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 839,
+      "query": "年来的重要研究进展，重",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_419",
+      "baseline_rank": 3,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 840,
+      "query": "数据挖掘算法优化",
+      "query_type": "exact",
+      "relevant_source": "doc_420",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 841,
+      "query": "，数据结构领域也迎来了新",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_420",
+      "baseline_rank": 5,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 842,
+      "query": "基于关系抽取的实时时间序",
+      "query_type": "exact",
+      "relevant_source": "doc_421",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 843,
+      "query": "取技术的快速发展，时间序列领域也迎",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_421",
+      "baseline_rank": 5,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 844,
+      "query": "基于回归分析的推荐",
+      "query_type": "exact",
+      "relevant_source": "doc_422",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 845,
+      "query": "域也迎来了新的机遇和挑战。本文从",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_422",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 846,
+      "query": "机器学习技术原理与联邦学习实践",
+      "query_type": "exact",
+      "relevant_source": "doc_423",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 847,
+      "query": "。通过引入缓存系统策略进行针对性优化，系",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_423",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 848,
+      "query": "下一代降维算法：融合大数",
+      "query_type": "exact",
+      "relevant_source": "doc_424",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 849,
+      "query": "算法系统部署过程中，我们遇到了大数据相关",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_424",
+      "baseline_rank": 4,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 850,
+      "query": "设计模式技术原理与数据结构实",
+      "query_type": "exact",
+      "relevant_source": "doc_425",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 851,
+      "query": "近年来的重要研究进展，重点分析",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_425",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 852,
+      "query": "大数据算法优化：图像分",
+      "query_type": "exact",
+      "relevant_source": "doc_426",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 853,
+      "query": "分析了图像分割、缓存系统",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_426",
+      "baseline_rank": -1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 854,
+      "query": "面向边缘计算的缓存系统平台构建",
+      "query_type": "exact",
+      "relevant_source": "doc_427",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 855,
+      "query": "当前边缘计算领域面临的计算效",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_427",
+      "baseline_rank": 9,
+      "hybrid_rank": 3
+    },
+    {
+      "qid": 856,
+      "query": "机器翻译最新进展与API网关发",
+      "query_type": "exact",
+      "relevant_source": "doc_428",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 857,
+      "query": "I网关、回归分析等关键技术。",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_428",
+      "baseline_rank": -1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 858,
+      "query": "面向情感分析的物联",
+      "query_type": "exact",
+      "relevant_source": "doc_429",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 859,
+      "query": "和存储瓶颈问题，本文提出了一种结合物联",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_429",
+      "baseline_rank": 3,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 860,
+      "query": "深入理解数据挖掘",
+      "query_type": "exact",
+      "relevant_source": "doc_430",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 861,
+      "query": "部署过程中，我们遇到了消息队列相关的性能",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_430",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 862,
+      "query": "缓存系统最新进展与",
+      "query_type": "exact",
+      "relevant_source": "doc_431",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 863,
+      "query": "存系统领域面临的计算效率和存储瓶颈问题，",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_431",
+      "baseline_rank": 7,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 864,
+      "query": "基于云计算的实时目标检测解",
+      "query_type": "exact",
+      "relevant_source": "doc_432",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 865,
+      "query": "入回归分析策略进行针对性优化，系",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_432",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 866,
+      "query": "API网关在自动化测试",
+      "query_type": "exact",
+      "relevant_source": "doc_433",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 867,
+      "query": "自动化测试技术的优化",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_433",
+      "baseline_rank": 4,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 868,
+      "query": "排序算法最新进展与数据库发展",
+      "query_type": "exact",
+      "relevant_source": "doc_434",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 869,
+      "query": "引入API网关策略进行针对性优化",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_434",
+      "baseline_rank": -1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 870,
+      "query": "面向大数据的物联网平台构",
+      "query_type": "exact",
+      "relevant_source": "doc_435",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 871,
+      "query": "。经过大量实验验证，该方案在机器翻",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_435",
+      "baseline_rank": -1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 872,
+      "query": "下一代微服务架构：融合",
+      "query_type": "exact",
+      "relevant_source": "doc_436",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 873,
+      "query": "和挑战。本文从系统架构角度出",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_436",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 874,
+      "query": "深入理解推荐系统：",
+      "query_type": "exact",
+      "relevant_source": "doc_437",
+      "baseline_rank": 0,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 875,
+      "query": "了新的机遇和挑战。本",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_437",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 876,
+      "query": "自然语言处理算法优化",
+      "query_type": "exact",
+      "relevant_source": "doc_438",
+      "baseline_rank": 1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 877,
+      "query": "自然语言处理的核心原理和关键技术。",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_438",
+      "baseline_rank": 2,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 878,
+      "query": "面向回归分析的自动化",
+      "query_type": "exact",
+      "relevant_source": "doc_439",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 879,
+      "query": "测试框架，有效解决了传统",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_439",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 880,
+      "query": "深入理解强化学习：从异",
+      "query_type": "exact",
+      "relevant_source": "doc_440",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 881,
+      "query": "验验证，该方案在情感分析场",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_440",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 882,
+      "query": "基于缓存系统的图数据",
+      "query_type": "exact",
+      "relevant_source": "doc_441",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 883,
+      "query": "综述了缓存系统领域近年来的重要研",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_441",
+      "baseline_rank": 0,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 884,
+      "query": "数据挖掘在机器翻译",
+      "query_type": "exact",
+      "relevant_source": "doc_442",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 885,
+      "query": "，设计了一套基于数据挖掘的机器翻",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_442",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 886,
+      "query": "强化学习算法优化：",
+      "query_type": "exact",
+      "relevant_source": "doc_443",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 887,
+      "query": "学习的区块链框架，有效解决了传统方法存在",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_443",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 888,
+      "query": "设计模式最新进展与图",
+      "query_type": "exact",
+      "relevant_source": "doc_444",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 889,
+      "query": "键技术。在此基础上，预测了未",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_444",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 890,
+      "query": "姿态估计算法优化：分布式系",
+      "query_type": "exact",
+      "relevant_source": "doc_445",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 891,
+      "query": "础上，预测了未来图数据",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_445",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 892,
+      "query": "关系抽取算法优化：",
+      "query_type": "exact",
+      "relevant_source": "doc_446",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 893,
+      "query": "，本文提出了一种结合文本分类技术的优",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_446",
+      "baseline_rank": 8,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 894,
+      "query": "物联网算法优化：云计算",
+      "query_type": "exact",
+      "relevant_source": "doc_447",
+      "baseline_rank": 0,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 895,
+      "query": "算技术的优化方案。经过大量实验",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_447",
+      "baseline_rank": 9,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 896,
+      "query": "大规模排序算法系统架构设",
+      "query_type": "exact",
+      "relevant_source": "doc_448",
+      "baseline_rank": 1,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 897,
+      "query": "合区块链技术的优化方案。经过大量实",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_448",
+      "baseline_rank": 4,
+      "hybrid_rank": 3
+    },
+    {
+      "qid": 898,
+      "query": "目标检测技术原理",
+      "query_type": "exact",
+      "relevant_source": "doc_449",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 899,
+      "query": "基础上，预测了未来物联网的发展方向和潜",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_449",
+      "baseline_rank": 2,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 900,
+      "query": "大规模时间序列系统架构设计与",
+      "query_type": "exact",
+      "relevant_source": "doc_450",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 901,
+      "query": "时间序列的核心原理和关键技术。通",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_450",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 902,
+      "query": "神经网络技术原理与聚",
+      "query_type": "exact",
+      "relevant_source": "doc_451",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 903,
+      "query": "部署过程中，我们遇到了聚类分析相关的性",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_451",
+      "baseline_rank": 2,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 904,
+      "query": "基于缓存系统的实时",
+      "query_type": "exact",
+      "relevant_source": "doc_452",
+      "baseline_rank": 9,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 905,
+      "query": "技术的快速发展，推荐系统领域也迎来了新",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_452",
+      "baseline_rank": -1,
+      "hybrid_rank": 4
+    },
+    {
+      "qid": 906,
+      "query": "联邦学习最新进展与",
+      "query_type": "exact",
+      "relevant_source": "doc_453",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 907,
+      "query": "了未来负载均衡的发展方向和潜",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_453",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 908,
+      "query": "大规模数据结构系统架构设计",
+      "query_type": "exact",
+      "relevant_source": "doc_454",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 909,
+      "query": "目标检测框架，有效解决了传统方法",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_454",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 910,
+      "query": "自然语言处理最新进展与聚",
+      "query_type": "exact",
+      "relevant_source": "doc_455",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 911,
+      "query": "来了新的机遇和挑战。本文从系统架构角度出",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_455",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 912,
+      "query": "神经网络最新进展与回归分析发展",
+      "query_type": "exact",
+      "relevant_source": "doc_456",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 913,
+      "query": "果，提出了一种创新的解决方案。实验结果",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_456",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 914,
+      "query": "深入理解时间序列：从图数据库到",
+      "query_type": "exact",
+      "relevant_source": "doc_457",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 915,
+      "query": "时间序列技术的快速发展，",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_457",
+      "baseline_rank": -1,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 916,
+      "query": "下一代微服务架构：融合情",
+      "query_type": "exact",
+      "relevant_source": "doc_458",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 917,
+      "query": "，本文提出了一种结合情感",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_458",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 918,
+      "query": "面向强化学习的降维算法平台构",
+      "query_type": "exact",
+      "relevant_source": "doc_459",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 919,
+      "query": "强化学习技术的快速发展，降维算法",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_459",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 920,
+      "query": "下一代性能优化：融合推荐系",
+      "query_type": "exact",
+      "relevant_source": "doc_460",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 921,
+      "query": "新的解决方案。实验结果表明",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_460",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 922,
+      "query": "大规模关系抽取系",
+      "query_type": "exact",
+      "relevant_source": "doc_461",
+      "baseline_rank": 0,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 923,
+      "query": "决方案。实验结果表明，该方法在关系",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_461",
+      "baseline_rank": 4,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 924,
+      "query": "面向目标检测的云计算",
+      "query_type": "exact",
+      "relevant_source": "doc_462",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 925,
+      "query": "新的机遇和挑战。本文",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_462",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 926,
+      "query": "大规模目标检测系统架构设计",
+      "query_type": "exact",
+      "relevant_source": "doc_463",
+      "baseline_rank": 0,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 927,
+      "query": "了未来网络安全的发展方向和潜",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_463",
+      "baseline_rank": 2,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 928,
+      "query": "下一代联邦学习：融合云计",
+      "query_type": "exact",
+      "relevant_source": "doc_464",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 929,
+      "query": "遇到了云计算相关的性能瓶颈。通过引",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_464",
+      "baseline_rank": 7,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 930,
+      "query": "数据库算法优化：命",
+      "query_type": "exact",
+      "relevant_source": "doc_465",
+      "baseline_rank": 1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 931,
+      "query": "的命名实体识别框架，有效解",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_465",
+      "baseline_rank": 0,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 932,
+      "query": "命名实体识别在强化学",
+      "query_type": "exact",
+      "relevant_source": "doc_466",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 933,
+      "query": "研究进展，重点分析了强化学习、对抗",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_466",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 934,
+      "query": "对抗生成网络在回归分析中的",
+      "query_type": "exact",
+      "relevant_source": "doc_467",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 935,
+      "query": "我们遇到了回归分析相关的性能瓶颈",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_467",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 936,
+      "query": "下一代搜索引擎：融",
+      "query_type": "exact",
+      "relevant_source": "doc_468",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 937,
+      "query": "核心原理和关键技术。通过分析人工智",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_468",
+      "baseline_rank": 2,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 938,
+      "query": "基于深度学习的迁移学习",
+      "query_type": "exact",
+      "relevant_source": "doc_469",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 939,
+      "query": "了迁移学习、API网关等关键技术。",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_469",
+      "baseline_rank": 2,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 940,
+      "query": "自然语言处理最新进展与计算",
+      "query_type": "exact",
+      "relevant_source": "doc_470",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 941,
+      "query": "，系统吞吐量提升了四",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_470",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 942,
+      "query": "基于区块链的实时自动",
+      "query_type": "exact",
+      "relevant_source": "doc_471",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 943,
+      "query": "区块链领域面临的计算效率和存",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_471",
+      "baseline_rank": 4,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 944,
+      "query": "基于边缘计算的联邦学习系统设",
+      "query_type": "exact",
+      "relevant_source": "doc_472",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 945,
+      "query": "算领域近年来的重要研究进展，重点分析",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_472",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 946,
+      "query": "微服务架构技术原",
+      "query_type": "exact",
+      "relevant_source": "doc_473",
+      "baseline_rank": 0,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 947,
+      "query": "域近年来的重要研究进展，重",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_473",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 948,
+      "query": "深入理解神经网络：从关",
+      "query_type": "exact",
+      "relevant_source": "doc_474",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 949,
+      "query": "结果表明，该方法在微",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_474",
+      "baseline_rank": 7,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 950,
+      "query": "面向性能优化的机器学习",
+      "query_type": "exact",
+      "relevant_source": "doc_475",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 951,
+      "query": "际性能优化系统部署过程中，我们遇到",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_475",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 952,
+      "query": "机器翻译算法优化",
+      "query_type": "exact",
+      "relevant_source": "doc_476",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 953,
+      "query": "题，本文提出了一种结合边缘",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_476",
+      "baseline_rank": -1,
+      "hybrid_rank": 4
+    },
+    {
+      "qid": 954,
+      "query": "基于容器技术的知识图谱系",
+      "query_type": "exact",
+      "relevant_source": "doc_477",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 955,
+      "query": "过分析知识图谱的最新研究成果，提出",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_477",
+      "baseline_rank": 9,
+      "hybrid_rank": 3
+    },
+    {
+      "qid": 956,
+      "query": "聚类分析在强化学习中的应用与",
+      "query_type": "exact",
+      "relevant_source": "doc_478",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 957,
+      "query": "度出发，设计了一套基于",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_478",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 958,
+      "query": "大数据在计算机视",
+      "query_type": "exact",
+      "relevant_source": "doc_479",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 959,
+      "query": "们遇到了计算机视觉相关的性能瓶",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_479",
+      "baseline_rank": 4,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 960,
+      "query": "深入理解姿态估计：从回归分析到",
+      "query_type": "exact",
+      "relevant_source": "doc_480",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 961,
+      "query": "提出了一种创新的解决方案。实验结果",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_480",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 962,
+      "query": "深入理解神经网络：从",
+      "query_type": "exact",
+      "relevant_source": "doc_481",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 963,
+      "query": "表明，该方法在数据挖掘指标上取得了",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_481",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 964,
+      "query": "下一代微服务架构：融合命名",
+      "query_type": "exact",
+      "relevant_source": "doc_482",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 965,
+      "query": "颈问题，本文提出了一种结",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_482",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 966,
+      "query": "大规模目标检测系统架构设",
+      "query_type": "exact",
+      "relevant_source": "doc_483",
+      "baseline_rank": 1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 967,
+      "query": "一套基于目标检测的姿态",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_483",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 968,
+      "query": "深入理解消息队列：从容器",
+      "query_type": "exact",
+      "relevant_source": "doc_484",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 969,
+      "query": "实际消息队列系统部署过程中，我们",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_484",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 970,
+      "query": "下一代消息队列：",
+      "query_type": "exact",
+      "relevant_source": "doc_485",
+      "baseline_rank": 1,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 971,
+      "query": "速发展，知识图谱领域也迎来了新的机遇和",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_485",
+      "baseline_rank": 3,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 972,
+      "query": "时间序列算法优化：回归",
+      "query_type": "exact",
+      "relevant_source": "doc_486",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 973,
+      "query": "果表明，该方法在迁移学习指",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_486",
+      "baseline_rank": -1,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 974,
+      "query": "面向API网关的异常检",
+      "query_type": "exact",
+      "relevant_source": "doc_487",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 975,
+      "query": "化方案。经过大量实验验证，",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_487",
+      "baseline_rank": 7,
+      "hybrid_rank": 3
+    },
+    {
+      "qid": 976,
+      "query": "降维算法最新进展与强化学",
+      "query_type": "exact",
+      "relevant_source": "doc_488",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 977,
+      "query": "略进行针对性优化，系统吞吐量提升",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_488",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 978,
+      "query": "深入理解区块链：",
+      "query_type": "exact",
+      "relevant_source": "doc_489",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 979,
+      "query": "能优化框架，有效解决了传统方法存在的问题",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_489",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 980,
+      "query": "消息队列在排序算",
+      "query_type": "exact",
+      "relevant_source": "doc_490",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 981,
+      "query": "法、容器技术等关键技术。",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_490",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 982,
+      "query": "强化学习技术原理与强",
+      "query_type": "exact",
+      "relevant_source": "doc_491",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 983,
+      "query": "分割策略进行针对性优",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_491",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 984,
+      "query": "基于推荐系统的搜索引擎",
+      "query_type": "exact",
+      "relevant_source": "doc_492",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 985,
+      "query": "们遇到了搜索引擎相关的性能瓶颈。通过引",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_492",
+      "baseline_rank": 2,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 986,
+      "query": "深入理解服务网格：从数据",
+      "query_type": "exact",
+      "relevant_source": "doc_493",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 987,
+      "query": "解决方案。实验结果表明，该方法在机器翻译",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_493",
+      "baseline_rank": -1,
+      "hybrid_rank": 1
+    },
+    {
+      "qid": 988,
+      "query": "下一代知识图谱：融合边缘",
+      "query_type": "exact",
+      "relevant_source": "doc_494",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 989,
+      "query": "缘计算的最新研究成果，提出了一种",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_494",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 990,
+      "query": "面向计算机视觉的物联网平台",
+      "query_type": "exact",
+      "relevant_source": "doc_495",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 991,
+      "query": "挑战。本文从系统架构角度出发",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_495",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 992,
+      "query": "情感分析在大数据中的应",
+      "query_type": "exact",
+      "relevant_source": "doc_496",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 993,
+      "query": "战。本文从系统架构角度出发，",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_496",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 994,
+      "query": "物联网算法优化：设计模式视",
+      "query_type": "exact",
+      "relevant_source": "doc_497",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 995,
+      "query": "从系统架构角度出发，设计了一套基于物联",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_497",
+      "baseline_rank": 3,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 996,
+      "query": "基于降维算法的实时姿态估计解",
+      "query_type": "exact",
+      "relevant_source": "doc_498",
+      "baseline_rank": 0,
+      "hybrid_rank": 0
+    },
+    {
+      "qid": 997,
+      "query": "架构角度出发，设计了一",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_498",
+      "baseline_rank": -1,
+      "hybrid_rank": -1
+    },
+    {
+      "qid": 998,
+      "query": "基于图像分割的实",
+      "query_type": "exact",
+      "relevant_source": "doc_499",
+      "baseline_rank": -1,
+      "hybrid_rank": 2
+    },
+    {
+      "qid": 999,
+      "query": "通过引入自动化测试策略进行针对性优化，系",
+      "query_type": "fuzzy",
+      "relevant_source": "doc_499",
+      "baseline_rank": -1,
+      "hybrid_rank": 2
+    }
+  ],
+  "mrr": {
+    "baseline": 0.560658,
+    "hybrid": 0.716148
+  }
+}

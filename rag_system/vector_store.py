@@ -6,6 +6,8 @@ Exact search — perfect recall, fine for <100K documents.
 
 import hashlib
 import json
+import os
+import tempfile
 from dataclasses import dataclass
 from pathlib import Path
 from typing import ClassVar
@@ -51,6 +53,8 @@ class VectorStore:
         self._metadata: dict[int, dict[str, object]] = {}
         # Set of ingested source paths for idempotency
         self._sources: set[str] = set()
+        # source path → content_hash, for O(1) change detection
+        self._source_hashes: dict[str, str] = {}
 
     @property
     def count(self) -> int:
@@ -82,19 +86,30 @@ class VectorStore:
                 f"got {vectors.shape[1]}"
             )
 
+        # Normalise document vectors in-place so that inner product on this
+        # IndexFlatIP equals cosine similarity regardless of whether the
+        # embedder already normalised. Previously this was an implicit
+        # contract with the embedder; making it explicit avoids silent
+        # similarity distortion if a non-normalising embedder is plugged in.
+        faiss = _get_faiss()
+        faiss.normalize_L2(vectors)  # type: ignore[attr-defined]
+
         start_id = self._index.ntotal
         self._index.add(vectors)  # type: ignore[attr-defined]
 
         for i, chunk in enumerate(chunks):
             vid = start_id + i
+            content_hash = chunk.metadata.get("content_hash", "")
             self._metadata[vid] = {
                 "text": chunk.text,
                 "source": chunk.source,
                 "chunk_index": chunk.chunk_index,
                 "metadata": chunk.metadata,
-                "content_hash": chunk.metadata.get("content_hash", ""),
+                "content_hash": content_hash,
             }
             self._sources.add(chunk.source)
+            if content_hash:
+                self._source_hashes[chunk.source] = str(content_hash)
 
     def has_source(self, source: str) -> bool:
         """Return True if *source* has already been ingested."""
@@ -102,14 +117,49 @@ class VectorStore:
 
     def file_hash(self, source: str) -> str | None:
         """Return the stored content hash for *source*, or None if not ingested."""
-        if source not in self._sources:
-            return None
-        # Find any entry with this source and return its stored hash
-        for meta in self._metadata.values():
-            if meta.get("source") == source:
-                h = meta.get("content_hash")
-                return str(h) if h else None
-        return None
+        # O(1) lookup via the source→hash index maintained in add/replace.
+        return self._source_hashes.get(source)
+
+    def remove_source(self, source: str) -> int:
+        """Remove all chunks belonging to *source*.
+
+        Returns the number of chunks removed (0 if the source was not
+        present). Uses the same batch-reconstruct + rebuild approach as
+        :meth:`replace_source` but adds nothing back.
+        """
+        _faiss = _get_faiss()
+        remove_ids: set[int] = {
+            vid for vid, meta in self._metadata.items()
+            if meta.get("source") == source
+        }
+        if not remove_ids:
+            return 0
+
+        sorted_ids = sorted(self._metadata.keys())
+        keep_mask = np.array(
+            [vid not in remove_ids for vid in sorted_ids], dtype=bool
+        )
+        max_id = sorted_ids[-1]
+        all_vectors = self._index.reconstruct_n(0, max_id + 1)  # type: ignore[attr-defined]
+        keep_vectors = all_vectors[keep_mask]
+
+        self._sources.discard(source)
+        self._source_hashes.pop(source, None)
+        for vid in remove_ids:
+            del self._metadata[vid]
+
+        new_index = _faiss.IndexFlatIP(self._dimension)
+        if keep_vectors.shape[0] > 0:
+            new_index.add(np.ascontiguousarray(keep_vectors))  # type: ignore[attr-defined]
+
+        remaining = sorted(self._metadata.keys())
+        new_metadata: dict[int, dict[str, object]] = {}
+        for new_id, old_id in enumerate(remaining):
+            new_metadata[new_id] = self._metadata[old_id]
+
+        self._index = new_index
+        self._metadata = new_metadata
+        return len(remove_ids)
 
     def replace_source(
         self, source: str, chunks: list[Chunk], embeddings: list[list[float]]
@@ -117,7 +167,8 @@ class VectorStore:
         """Replace chunks of *source* with new ones. Old entries are removed.
 
         Extract vectors directly from the FAISS index (IndexFlat stores them
-        internally), filter out removed entries, rebuild.
+        internally), filter out removed entries, rebuild. Uses batch
+        ``reconstruct_n`` instead of per-position reconstruction for speed.
         """
         _faiss = _get_faiss()
         ntotal = self._index.ntotal
@@ -130,29 +181,35 @@ class VectorStore:
 
         if ntotal == 0 or not remove_ids:
             self._sources.discard(source)
+            self._source_hashes.pop(source, None)
             self.add_documents(chunks, embeddings)
             return
 
-        # 2. Extract all vectors from FAISS, filter out removed positions
+        # 2. Batch-extract all vectors from FAISS, then filter in NumPy.
+        #    reconstruct_n(start, n) is far cheaper than n separate calls.
         sorted_ids = sorted(self._metadata.keys())
-        keep_vectors = np.array(
-            [
-                self._index.reconstruct(pos)
-                for i, pos in enumerate(sorted_ids)
-                if pos not in remove_ids
-            ],
-            dtype=np.float32,
+        keep_mask = np.array(
+            [vid not in remove_ids for vid in sorted_ids], dtype=bool
         )
+        if sorted_ids:
+            # IndexFlat supports reconstruct_n over a contiguous range only,
+            # so pull the whole span [0, max_id] once and select by mask.
+            max_id = sorted_ids[-1]
+            all_vectors = self._index.reconstruct_n(0, max_id + 1)  # type: ignore[attr-defined]
+            keep_vectors = all_vectors[keep_mask]
+        else:
+            keep_vectors = np.empty((0, self._dimension), dtype=np.float32)
 
         # 3. Remove old entries
         self._sources.discard(source)
+        self._source_hashes.pop(source, None)
         for vid in remove_ids:
             del self._metadata[vid]
 
         # 4. Rebuild FAISS index with kept vectors
         new_index = _faiss.IndexFlatIP(self._dimension)
-        if keep_vectors.size > 0:
-            new_index.add(keep_vectors)  # type: ignore[attr-defined]
+        if keep_vectors.shape[0] > 0:
+            new_index.add(np.ascontiguousarray(keep_vectors))  # type: ignore[attr-defined]
 
         # 5. Remap metadata keys (0, 1, 2, ...)
         remaining = sorted(self._metadata.keys())
@@ -198,28 +255,63 @@ class VectorStore:
         return results
 
     def save(self, directory: str | Path) -> None:
-        """Persist index and metadata to disk."""
+        """Persist index and metadata to disk atomically.
+
+        Both files are written to temporary paths first and renamed into
+        place only after both succeed. This prevents a crash between the two
+        writes from leaving the store in an inconsistent (index ↔ metadata
+        mismatched) state. Temp files are cleaned up on failure.
+        """
         directory = Path(directory)
         directory.mkdir(parents=True, exist_ok=True)
 
         faiss = _get_faiss()
         index_path = directory / self.INDEX_FILENAME
-        faiss.write_index(self._index, str(index_path))  # type: ignore[attr-defined]
+        meta_path = directory / self.META_FILENAME
 
         serializable_meta = {str(k): v for k, v in self._metadata.items()}
-        meta_path = directory / self.META_FILENAME
-        meta_path.write_text(
-            json.dumps(
-                {
-                    "dimension": self._dimension,
-                    "sources": sorted(self._sources),
-                    "entries": serializable_meta,
-                },
-                ensure_ascii=False,
-                indent=2,
-            ),
-            encoding="utf-8",
+        meta_payload = json.dumps(
+            {
+                "dimension": self._dimension,
+                "sources": sorted(self._sources),
+                "source_hashes": self._source_hashes,
+                "entries": serializable_meta,
+            },
+            ensure_ascii=False,
+            indent=2,
         )
+
+        tmp_meta_path: Path | None = None
+        tmp_index_path: Path | None = None
+        try:
+            # Write both temp files first; only rename after both succeed.
+            tmp_fd, tmp_meta_name = tempfile.mkstemp(
+                prefix=self.META_FILENAME + ".", suffix=".tmp", dir=str(directory)
+            )
+            os.close(tmp_fd)
+            tmp_meta_path = Path(tmp_meta_name)
+            tmp_meta_path.write_text(meta_payload, encoding="utf-8")
+
+            tmp_index_path = directory / (self.INDEX_FILENAME + ".tmp")
+            faiss.write_index(self._index, str(tmp_index_path))  # type: ignore[attr-defined]
+
+            # Rename metadata first, then the index. If a crash happens
+            # between the two renames, on the next load metadata will be a
+            # superset of the index entries (a few orphan entries), which is
+            # safe — search is bounded by index.ntotal. The reverse order
+            # could let search return vector ids absent from metadata.
+            os.replace(tmp_meta_path, meta_path)
+            tmp_meta_path = None  # ownership transferred
+            os.replace(tmp_index_path, index_path)
+            tmp_index_path = None
+        finally:
+            # Clean up any temp files left over from a failed write.
+            for leftover in (tmp_meta_path, tmp_index_path):
+                if leftover is not None:
+                    try:
+                        leftover.unlink(missing_ok=True)
+                    except OSError:
+                        pass
 
     @classmethod
     def load(cls, directory: str | Path) -> "VectorStore":
@@ -246,6 +338,18 @@ class VectorStore:
         store._index = index
         store._metadata = {int(k): v for k, v in meta_json["entries"].items()}
         store._sources = set(meta_json.get("sources", []))
+        # Rebuild the source→hash index. Prefer the persisted map; fall back
+        # to scanning entries for stores written by older versions.
+        source_hashes = meta_json.get("source_hashes")
+        if isinstance(source_hashes, dict):
+            store._source_hashes = {str(k): str(v) for k, v in source_hashes.items()}
+        else:
+            store._source_hashes = {}
+            for entry in store._metadata.values():
+                src = entry.get("source")
+                h = entry.get("content_hash")
+                if src and h and src not in store._source_hashes:
+                    store._source_hashes[str(src)] = str(h)
         return store
 
     @property

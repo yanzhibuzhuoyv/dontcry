@@ -2,10 +2,19 @@
 
 import time
 from dataclasses import dataclass
+from typing import Iterator
 
 from .config import LLMGenerationConfig
 from .errors import GenerationError
 from .vector_store import SearchResult
+
+
+# Conservative token budget reserved for retrieved context chunks inside the
+# system prompt. Most chat models have >=8K context windows; after reserving
+# room for the system template, the user question and the max_tokens answer,
+# ~4K for context is a safe default that avoids silently overflowing the
+# window when many long chunks are retrieved.
+_DEFAULT_CONTEXT_TOKEN_BUDGET = 4000
 
 
 @dataclass(frozen=True)
@@ -66,12 +75,71 @@ class LLMGenerator:
             f"{last_error}"
         )
 
+    def stream(self, messages: list[dict[str, str]]) -> Iterator[str]:
+        """Stream chat completion tokens, yielding text chunks as they arrive.
+
+        Retry only applies to the *connection* phase (the ``create`` call).
+        Once tokens have started flowing, a mid-stream failure is raised
+        immediately rather than retried — retrying then would re-send the
+        request and yield the prefix again, producing duplicated/garbled
+        output for the caller. Lets the chat REPL print answers
+        incrementally instead of blocking until the full response is ready.
+        """
+        last_error: Exception | None = None
+
+        for attempt in range(1, self._retry.max_attempts + 1):
+            started = False
+            try:
+                response = self._client.chat.completions.create(
+                    model=self._config.model,
+                    messages=messages,  # type: ignore[arg-type]
+                    temperature=self._config.temperature,
+                    max_tokens=self._config.max_tokens,
+                    stream=True,
+                )
+                for chunk in response:
+                    if not getattr(chunk, "choices", None):
+                        continue
+                    delta = chunk.choices[0].delta
+                    content = getattr(delta, "content", None)
+                    if content:
+                        started = True
+                        yield content
+                return
+            except Exception as exc:
+                last_error = exc
+                # Mid-stream failure: do NOT retry (would duplicate output).
+                if started:
+                    raise GenerationError(
+                        f"LLM stream interrupted after partial output: {exc}"
+                    ) from exc
+                if not self._is_retryable(exc):
+                    raise GenerationError(f"LLM stream failed: {exc}") from exc
+                if attempt < self._retry.max_attempts:
+                    delay = min(
+                        self._retry.base_delay * (2 ** (attempt - 1)),
+                        self._retry.max_delay,
+                    )
+                    time.sleep(delay)
+
+        raise GenerationError(
+            f"LLM stream failed after {self._retry.max_attempts} attempts: "
+            f"{last_error}"
+        )
+
     def build_rag_prompt(
         self,
         question: str,
         context_chunks: list[SearchResult],
+        max_context_tokens: int = _DEFAULT_CONTEXT_TOKEN_BUDGET,
     ) -> list[dict[str, str]]:
-        """Construct messages with system prompt + context + question."""
+        """Construct messages with system prompt + context + question.
+
+        Retrieved chunks are accumulated in score order (the store returns
+        them best-first) and truncated once the estimated token budget is
+        reached, so a large ``top_k`` cannot silently overflow the model's
+        context window.
+        """
         system_prompt = (
             "你是一个基于参考资料的问答助手。请根据以下参考资料回答用户的问题。\n"
             "规则：\n"
@@ -81,10 +149,20 @@ class LLMGenerator:
         )
 
         if context_chunks:
-            context_text = "\n\n---\n\n".join(
-                f"[来源: {c.source}]\n{c.text}" for c in context_chunks
-            )
-            system_prompt += f"\n\n## 参考资料\n\n{context_text}"
+            kept: list[str] = []
+            used_tokens = 0
+            for chunk in context_chunks:
+                piece = f"[来源: {chunk.source}]\n{chunk.text}"
+                piece_tokens = _estimate_tokens(piece)
+                if kept and used_tokens + piece_tokens > max_context_tokens:
+                    break
+                kept.append(piece)
+                used_tokens += piece_tokens
+                if used_tokens >= max_context_tokens:
+                    break
+            if kept:
+                context_text = "\n\n---\n\n".join(kept)
+                system_prompt += f"\n\n## 参考资料\n\n{context_text}"
 
         return [
             {"role": "system", "content": system_prompt},
@@ -120,3 +198,17 @@ def _extract_status_code(exc: Exception) -> int | None:
                     return status
         current = current.__cause__ or current.__context__
     return None
+
+
+def _estimate_tokens(text: str) -> int:
+    """Rough, dependency-free token estimate for context truncation.
+
+    CJK characters encode to ~3 UTF-8 bytes and roughly map 1:1 to tokens;
+    ASCII maps ~4 chars to 1 token. Using ``len(utf8_bytes) // 3`` gives a
+    reasonable mixed-language approximation without pulling in tiktoken.
+    This is only used to decide when to stop adding context chunks — it does
+    not need to be exact.
+    """
+    if not text:
+        return 0
+    return max(1, len(text.encode("utf-8")) // 3)

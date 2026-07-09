@@ -4,6 +4,7 @@ Both implement the Embedder Protocol so callers don't need to know which
 backend is active.
 """
 
+import time
 from dataclasses import dataclass, field
 from typing import Any, Protocol, runtime_checkable
 
@@ -116,6 +117,54 @@ class LocalEmbedder:
 # ---------------------------------------------------------------------------
 
 _API_BATCH_SIZE = 100
+# Conservative max input length per text (chars). Most embedding models cap
+# at 512-8192 tokens; ~16000 chars ≈ 8000 tokens for mixed CJK/ASCII. Longer
+# inputs are truncated to avoid silent API rejection.
+_API_MAX_INPUT_CHARS = 16000
+_API_RETRY_ATTEMPTS = 3
+_API_RETRY_BASE_DELAY = 1.0
+_API_RETRY_MAX_DELAY = 30.0
+
+
+def _truncate_text(text: str, max_chars: int = _API_MAX_INPUT_CHARS) -> str:
+    """Truncate text to max_chars to stay under embedding model input limits."""
+    if len(text) <= max_chars:
+        return text
+    return text[:max_chars]
+
+
+def _is_retryable_embedding_error(exc: Exception) -> bool:
+    """Return True for transient embedding API errors (rate limit, server).
+
+    Walks the exception chain to find an HTTP status code — the openai SDK
+    often wraps the real status inside ``exc.response.status_code`` rather
+    than on the exception itself. Mirrors the logic in ``llm._extract_status_code``
+    so both clients agree on what is retryable.
+    """
+    status: int | None = None
+    current: BaseException | None = exc
+    while current is not None:
+        for attr in ("status_code", "http_status", "status"):
+            val = getattr(current, attr, None)
+            if isinstance(val, int):
+                status = val
+                break
+        if status is None:
+            resp = getattr(current, "response", None)
+            if resp is not None:
+                val = getattr(resp, "status_code", None)
+                if isinstance(val, int):
+                    status = val
+        if status is not None:
+            break
+        current = current.__cause__ or current.__context__
+    if status is not None:
+        return status in (429, 500, 502, 503, 504)
+    msg = str(exc).lower()
+    return any(
+        kw in msg
+        for kw in ("timeout", "connection", "reset", "network", "retry", "overloaded")
+    )
 
 
 @dataclass(frozen=True)
@@ -162,20 +211,50 @@ class APIEmbedder:
         if not texts:
             return []
         self._ensure_client()
+        # Truncate inputs to stay under embedding model input limits.
+        safe_texts = [_truncate_text(t) for t in texts]
         all_vectors: list[list[float]] = []
-        for i in range(0, len(texts), _API_BATCH_SIZE):
-            batch = texts[i : i + _API_BATCH_SIZE]
+        for i in range(0, len(safe_texts), _API_BATCH_SIZE):
+            batch = safe_texts[i : i + _API_BATCH_SIZE]
+            batch_vectors = self._embed_batch_with_retry(
+                batch, i // _API_BATCH_SIZE
+            )
+            all_vectors.extend(batch_vectors)
+        return all_vectors
+
+    def _embed_batch_with_retry(
+        self, batch: list[str], batch_idx: int
+    ) -> list[list[float]]:
+        """Embed one batch with exponential-backoff retry on transient errors.
+
+        Previously a single 429/503 would abort the whole ingest; now only
+        non-retryable errors fail immediately, and transient ones are retried
+        (mirroring the policy already used by LLMGenerator).
+        """
+        last_error: Exception | None = None
+        for attempt in range(1, _API_RETRY_ATTEMPTS + 1):
             try:
                 resp = self._client.embeddings.create(  # type: ignore[union-attr]
                     model=self.model, input=batch
                 )
                 items = sorted(resp.data, key=lambda d: d.index)
-                all_vectors.extend([it.embedding for it in items])
+                return [it.embedding for it in items]
             except Exception as exc:
-                raise EmbeddingError(
-                    f"API embedding failed (batch {i // _API_BATCH_SIZE}): {exc}"
-                ) from exc
-        return all_vectors
+                last_error = exc
+                if not _is_retryable_embedding_error(exc):
+                    raise EmbeddingError(
+                        f"API embedding failed (batch {batch_idx}): {exc}"
+                    ) from exc
+                if attempt < _API_RETRY_ATTEMPTS:
+                    delay = min(
+                        _API_RETRY_BASE_DELAY * (2 ** (attempt - 1)),
+                        _API_RETRY_MAX_DELAY,
+                    )
+                    time.sleep(delay)
+        raise EmbeddingError(
+            f"API embedding failed after {_API_RETRY_ATTEMPTS} attempts "
+            f"(batch {batch_idx}): {last_error}"
+        )
 
     def embed_query(self, text: str) -> list[float]:
         return self.embed_documents([text])[0]

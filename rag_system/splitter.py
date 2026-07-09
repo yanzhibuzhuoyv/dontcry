@@ -124,7 +124,14 @@ class TextSplitter:
         return final_chunks
 
     def _merge_splits(self, splits: list[str], separator: str) -> list[str]:
-        """Merge small adjacent splits into chunks that fit within chunk_size."""
+        """Merge small adjacent splits into chunks that fit within chunk_size.
+
+        Adjacent chunks overlap by up to ``chunk_overlap`` characters: when a
+        new chunk starts, the tail of the previous chunk is carried over as a
+        prefix so that cross-boundary context is preserved. Previously the
+        overlap was only honoured in the no-separator fallback path; now it is
+        applied on the main merge path too.
+        """
         if not splits:
             return []
 
@@ -132,6 +139,11 @@ class TextSplitter:
         chunks: list[str] = []
         current_chunk: list[str] = []
         current_len = 0
+
+        def _joined_len(parts: list[str]) -> int:
+            if not parts:
+                return 0
+            return sum(self.length_function(p) for p in parts) + sep_len * (len(parts) - 1)
 
         for split in splits:
             split_len = self.length_function(split)
@@ -143,8 +155,19 @@ class TextSplitter:
             else:
                 if current_chunk:
                     chunks.append(separator.join(current_chunk))
-                current_chunk = [split]
-                current_len = split_len
+                # Carry over the tail of the previous chunk as overlap prefix
+                overlap_prefix: list[str] = []
+                if self.chunk_overlap > 0 and current_chunk:
+                    overlap_len = 0
+                    for piece in reversed(current_chunk):
+                        piece_len = self.length_function(piece)
+                        next_sep_len = sep_len if overlap_prefix else 0
+                        if overlap_len + next_sep_len + piece_len > self.chunk_overlap:
+                            break
+                        overlap_prefix.insert(0, piece)
+                        overlap_len += next_sep_len + piece_len
+                current_chunk = overlap_prefix + [split]
+                current_len = _joined_len(current_chunk)
 
         if current_chunk:
             chunks.append(separator.join(current_chunk))

@@ -1,10 +1,14 @@
 """CLI argument parsing and command dispatch for the RAG system."""
 
 import argparse
+import json
+import logging
 import os
 import sys
 from pathlib import Path
 from typing import Optional, Sequence
+
+logger = logging.getLogger(__name__)
 
 # Fix Windows console encoding
 if sys.platform == "win32":
@@ -18,6 +22,7 @@ if sys.platform == "win32":
 from .config import load_rag_config
 from .errors import RAGSystemError
 from .rag import RAGSystem
+from .vector_store import VectorStore
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -74,8 +79,27 @@ def build_parser() -> argparse.ArgumentParser:
         help="向量存储目录",
     )
 
+    # list-sources
+    list_sources_parser = sub.add_parser("list-sources", help="列出已索引的文件")
+    list_sources_parser.add_argument(
+        "--store-dir", default=None,
+        help="向量存储目录",
+    )
+
+    # remove
+    remove_parser = sub.add_parser("remove", help="从索引中删除某文件及其所有块")
+    remove_parser.add_argument("source", help="要删除的文件路径（与 ingest 时一致）")
+    remove_parser.add_argument(
+        "--store-dir", default=None,
+        help="向量存储目录",
+    )
+
     # ---- memory ----
     memory_parser = sub.add_parser("memory", help="会话锚点记忆管理")
+    memory_parser.add_argument(
+        "--base-dir", default=None,
+        help="锚点记忆根目录（默认当前工作目录）",
+    )
     memory_sub = memory_parser.add_subparsers(dest="memory_cmd", required=True)
 
     m_end = memory_sub.add_parser("end", help="结束会话并保存记忆")
@@ -122,6 +146,10 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
             _cmd_chat(config, args)
         elif args.command == "info":
             _cmd_info(config, args.store_dir if hasattr(args, "store_dir") and args.store_dir else config.vector_store_dir)
+        elif args.command == "list-sources":
+            _cmd_list_sources(config)
+        elif args.command == "remove":
+            _cmd_remove(config, args)
         elif args.command == "memory":
             _cmd_memory(args)
     except RAGSystemError as exc:
@@ -187,20 +215,18 @@ def _cmd_chat(config, args) -> None:
 
 def _cmd_info(config, store_dir: str) -> None:
     store_path = Path(store_dir)
-    index_file = store_path / "index.faiss"
-    meta_file = store_path / "metadata.json"
+    index_file = store_path / VectorStore.INDEX_FILENAME
+    meta_file = store_path / VectorStore.META_FILENAME
 
     print(f"向量存储: {store_dir}")
-    print(f"  index.faiss: {'存在' if index_file.exists() else '不存在'}")
-    print(f"  metadata.json: {'存在' if meta_file.exists() else '不存在'}")
+    print(f"  {VectorStore.INDEX_FILENAME}: {'存在' if index_file.exists() else '不存在'}")
+    print(f"  {VectorStore.META_FILENAME}: {'存在' if meta_file.exists() else '不存在'}")
 
     if not index_file.exists():
         print("\n尚未创建索引。运行 'ingest' 开始。")
         return
 
     try:
-        from .vector_store import VectorStore
-
         store = VectorStore.load(store_dir)
         print(f"\n索引统计:")
         print(f"  文件数: {len(store.sources)}")
@@ -216,6 +242,27 @@ def _cmd_info(config, store_dir: str) -> None:
         print(f"\n读取索引失败: {exc}", file=sys.stderr)
 
 
+def _cmd_list_sources(config) -> None:
+    rag = RAGSystem(config)
+    sources = rag.list_sources()
+    if not sources:
+        print("索引中暂无文件。")
+        return
+    print(f"已索引 {len(sources)} 个文件:\n")
+    for s in sources:
+        print(f"  {s}")
+
+
+def _cmd_remove(config, args) -> None:
+    rag = RAGSystem(config)
+    source = args.source
+    if not rag.vector_store.has_source(source):
+        print(f"错误: 索引中不存在该文件: {source}", file=sys.stderr)
+        sys.exit(1)
+    removed = rag.remove_source(source)
+    print(f"已从索引删除: {source}（移除 {removed} 个块）")
+
+
 # ---------------------------------------------------------------------------
 # Memory command handlers
 # ---------------------------------------------------------------------------
@@ -223,11 +270,12 @@ def _cmd_info(config, store_dir: str) -> None:
 
 def _cmd_memory(args) -> None:
     """Dispatch memory subcommands."""
-    import json
-
     from .session_memory import SessionMemory
 
-    base_dir = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    # Previously base_dir was derived from __file__, which after `pip install`
+    # pointed into site-packages rather than the user's project. Default to
+    # the current working directory, overridable via --base-dir.
+    base_dir = Path(args.base_dir) if getattr(args, "base_dir", None) else Path.cwd()
     memory = SessionMemory(base_dir=base_dir)
 
     if args.memory_cmd == "end":

@@ -12,8 +12,18 @@ from typing import Literal
 
 from .errors import ConfigurationError
 
-# Auto-load .env from project root (two levels up from this file)
+# Auto-load .env from project root (two levels up from this file).
+# Done lazily inside load_rag_config() rather than at import time so that
+# merely importing this module has no side effects on os.environ (which
+# previously made test isolation harder).
+_dotenv_loaded = False
+
+
 def _load_dotenv() -> None:
+    global _dotenv_loaded
+    if _dotenv_loaded:
+        return
+    _dotenv_loaded = True
     try:
         from dotenv import load_dotenv
 
@@ -22,9 +32,6 @@ def _load_dotenv() -> None:
             load_dotenv(env_path)
     except ImportError:
         pass  # python-dotenv not installed — env vars must be set manually
-
-
-_load_dotenv()
 
 
 # ---------------------------------------------------------------------------
@@ -85,12 +92,65 @@ class ChunkingConfig:
 
 
 @dataclass(frozen=True)
+class RetrievalConfig:
+    """Controls the retrieval pipeline: hybrid search and reranking.
+
+    Both are opt-in (disabled by default) so existing behaviour is unchanged
+    unless the user explicitly enables them via env vars.
+
+    Alpha tuning (500-doc / 1000-query benchmark with bge-small-zh-v1.5):
+    the previous default alpha=0.3 under-weighted BM25. Sweeping alpha showed
+    fuzzy-query MRR climbs monotonically from 0.23 (alpha=0) to 0.50
+    (alpha=1), while exact-query MRR stays ~0.94 across the range. The new
+    default 0.5 is a robust middle ground.
+
+    Caveat: in that benchmark alpha=1.0 (pure BM25) was the global optimum —
+    an anomaly caused by the synthetic queries being verbatim substrings of
+    the source documents, which favours literal bigram matching. Real user
+    queries (paraphrases, conceptual questions) will not favour BM25 this
+    strongly, so 0.5 rather than 1.0 is the default. The adaptive_alpha
+    option is an unvalidated heuristic — measure on your own data before
+    enabling it.
+    """
+
+    hybrid_enabled: bool = False
+    # BM25 weight in the fused score; (1 - alpha) is the vector weight.
+    hybrid_alpha: float = 0.5
+    # When True, override hybrid_alpha per-query by query length: short
+    # queries (likely keywords/titles) keep more vector weight, long queries
+    # (likely descriptive snippets) lean on BM25 keyword matching.
+    adaptive_alpha: bool = False
+    short_query_threshold: int = 12
+    short_query_alpha: float = 0.4
+    long_query_alpha: float = 0.6
+    reranker_enabled: bool = False
+    reranker_model: str = "BAAI/bge-reranker-base"
+    # When reranking, retrieve top_k * multiplier candidates first, then let
+    # the cross-encoder re-score and trim to top_k.
+    candidate_multiplier: int = 4
+
+    def __post_init__(self):
+        for name, val in (
+            ("hybrid_alpha", self.hybrid_alpha),
+            ("short_query_alpha", self.short_query_alpha),
+            ("long_query_alpha", self.long_query_alpha),
+        ):
+            if not (0.0 <= val <= 1.0):
+                raise ConfigurationError(f"{name} must be in [0, 1]")
+        if self.candidate_multiplier < 1:
+            raise ConfigurationError("candidate_multiplier must be >= 1")
+        if self.short_query_threshold < 1:
+            raise ConfigurationError("short_query_threshold must be >= 1")
+
+
+@dataclass(frozen=True)
 class RAGConfig:
     """Top-level RAG configuration aggregating all sub-configs."""
 
     embedding: EmbeddingConfig
     llm: LLMGenerationConfig
     chunking: ChunkingConfig = field(default_factory=ChunkingConfig)
+    retrieval: RetrievalConfig = field(default_factory=RetrievalConfig)
     top_k: int = 5
     vector_store_dir: str = "./rag_index"
 
@@ -118,6 +178,15 @@ _DEFAULTS = {
     "RAG_CHUNK_OVERLAP": "128",
     "RAG_TOP_K": "5",
     "RAG_VECTOR_STORE_DIR": "./rag_index",
+    "RAG_HYBRID_ENABLED": "false",
+    "RAG_HYBRID_ALPHA": "0.5",
+    "RAG_ADAPTIVE_ALPHA": "false",
+    "RAG_SHORT_QUERY_THRESHOLD": "12",
+    "RAG_SHORT_QUERY_ALPHA": "0.4",
+    "RAG_LONG_QUERY_ALPHA": "0.6",
+    "RAG_RERANKER_ENABLED": "false",
+    "RAG_RERANKER_MODEL": "BAAI/bge-reranker-base",
+    "RAG_CANDIDATE_MULTIPLIER": "4",
 }
 
 
@@ -126,11 +195,37 @@ def _env(key: str) -> str:
     return os.environ.get(key, _DEFAULTS.get(key, ""))
 
 
+def _env_int(key: str) -> int:
+    """Read an integer env var, raising ConfigurationError on bad input."""
+    raw = _env(key)
+    try:
+        return int(raw)
+    except ValueError:
+        raise ConfigurationError(f"{key} must be an integer, got '{raw}'")
+
+
+def _env_float(key: str) -> float:
+    """Read a float env var, raising ConfigurationError on bad input."""
+    raw = _env(key)
+    try:
+        return float(raw)
+    except ValueError:
+        raise ConfigurationError(f"{key} must be a number, got '{raw}'")
+
+
+def _env_bool(key: str) -> bool:
+    """Read a boolean env var. Accepts 1/true/yes/on/y/是 (case-insensitive)."""
+    raw = _env(key).strip().lower()
+    return raw in ("1", "true", "yes", "on", "y", "是")
+
+
 def load_rag_config() -> RAGConfig:
     """Build a RAGConfig from RAG_* environment variables.
 
-    Raises ConfigurationError if required values are missing.
+    Raises ConfigurationError if required values are missing or malformed.
     """
+    _load_dotenv()
+
     embedding_provider = _env("RAG_EMBEDDING_PROVIDER").strip().lower()
     if embedding_provider not in ("local", "api"):
         raise ConfigurationError(
@@ -153,19 +248,32 @@ def load_rag_config() -> RAGConfig:
         model=_env("RAG_LLM_MODEL"),
         base_url=_env("RAG_LLM_BASE_URL"),
         api_key=_env("RAG_LLM_API_KEY"),
-        temperature=float(_env("RAG_LLM_TEMPERATURE")),
-        max_tokens=int(_env("RAG_LLM_MAX_TOKENS")),
+        temperature=_env_float("RAG_LLM_TEMPERATURE"),
+        max_tokens=_env_int("RAG_LLM_MAX_TOKENS"),
     )
 
     chunking = ChunkingConfig(
-        chunk_size=int(_env("RAG_CHUNK_SIZE")),
-        chunk_overlap=int(_env("RAG_CHUNK_OVERLAP")),
+        chunk_size=_env_int("RAG_CHUNK_SIZE"),
+        chunk_overlap=_env_int("RAG_CHUNK_OVERLAP"),
+    )
+
+    retrieval = RetrievalConfig(
+        hybrid_enabled=_env_bool("RAG_HYBRID_ENABLED"),
+        hybrid_alpha=_env_float("RAG_HYBRID_ALPHA"),
+        adaptive_alpha=_env_bool("RAG_ADAPTIVE_ALPHA"),
+        short_query_threshold=_env_int("RAG_SHORT_QUERY_THRESHOLD"),
+        short_query_alpha=_env_float("RAG_SHORT_QUERY_ALPHA"),
+        long_query_alpha=_env_float("RAG_LONG_QUERY_ALPHA"),
+        reranker_enabled=_env_bool("RAG_RERANKER_ENABLED"),
+        reranker_model=_env("RAG_RERANKER_MODEL"),
+        candidate_multiplier=_env_int("RAG_CANDIDATE_MULTIPLIER"),
     )
 
     return RAGConfig(
         embedding=embedding,
         llm=llm,
         chunking=chunking,
-        top_k=int(_env("RAG_TOP_K")),
+        retrieval=retrieval,
+        top_k=_env_int("RAG_TOP_K"),
         vector_store_dir=_env("RAG_VECTOR_STORE_DIR"),
     )
